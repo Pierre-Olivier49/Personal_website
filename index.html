@@ -9,12 +9,14 @@
   <meta name="author" content="Pierre-Olivier Marquis">
   <meta name="theme-color" content="#0d1f3c">
 
+  <link rel="canonical" href="https://pierreoliviermarquis.com/">
+
   <!-- Aperçu sur les réseaux sociaux.
-       À compléter une fois le domaine choisi : <link rel="canonical">,
-       og:url et og:image (1200x630). -->
+       Reste à ajouter : og:image (1200x630). -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CA">
   <meta property="og:site_name" content="Pierre-Olivier Marquis">
+  <meta property="og:url" content="https://pierreoliviermarquis.com/">
   <meta property="og:title" content="Pierre-Olivier Marquis | Ingénieur électrique">
   <meta property="og:description" content="Étudiant en génie électrique à l'Université Concordia, stagiaire en conception électrique chez Bombardier.">
   <meta name="twitter:card" content="summary">
@@ -44,6 +46,7 @@
     "@type": "Person",
     "name": "Pierre-Olivier Marquis",
     "jobTitle": "Stagiaire en conception électrique",
+    "url": "https://pierreoliviermarquis.com/",
     "email": "mailto:pierreoliviermarquis49@gmail.com",
     "telephone": "+1-514-883-3756",
     "address": { "@type": "PostalAddress", "addressLocality": "Montréal", "addressRegion": "QC", "addressCountry": "CA" },
@@ -64,7 +67,7 @@
   <div class="nav-inner">
     <a href="#accueil" class="nav-logo">
       <span class="nav-logo-mark" aria-hidden="true">PM</span>
-      Pierre<span class="name-dash">-</span>Olivier Marquis
+      <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
 
     <nav aria-label="Navigation principale">
@@ -144,8 +147,8 @@
       <article class="exp-card" data-reveal>
         <div class="exp-top">
           <div>
-            <h3 class="exp-role">Stagiaire en Conception Électrique</h3>
-            <p class="exp-company">Bombardier · Dorval, QC</p>
+            <h3 class="exp-role">Stagiaire en Conception Électrique (12 mois)</h3>
+            <p class="exp-company">Bombardier · Montréal, QC</p>
           </div>
           <p class="exp-date">Sept 2024 — Août 2025</p>
         </div>
@@ -173,10 +176,21 @@
         <h3 class="edu-degree">Baccalauréat en génie électrique — Co-op</h3>
         <p class="edu-school">Université Concordia · Montréal, QC</p>
         <p class="edu-date">2023 — Prévu Avril 2027</p>
-        <p class="edu-courses">
-          <strong>Cours pertinents :</strong>
-          Génie de la puissance · Réseaux de télécommunication · Projet de conception en équipe
-        </p>
+
+        <div class="edu-courses">
+          <h4 class="edu-courses-title">Cours pertinents</h4>
+          <ul class="edu-course-list">
+            <li><span class="edu-course-code">ELEC 372</span> Fondements des systèmes de commande</li>
+            <li><span class="edu-course-code">ELEC 312</span> Électronique II</li>
+            <li><span class="edu-course-code">ELEC 351</span> Ondes électromagnétiques et structures de guidage</li>
+            <li><span class="edu-course-code">ELEC 331</span> Génie de la puissance</li>
+            <li>
+              <span class="edu-course-code">ELE8202</span>
+              Commande de procédés industriels
+              <span class="edu-course-note">Polytechnique Montréal</span>
+            </li>
+          </ul>
+        </div>
       </article>
     </div>
   </section>
@@ -187,11 +201,29 @@
       <span class="section-label">Projets</span>
       <h2 id="titre-projets">Des projets concrets, du <em>terrain au code</em></h2>
       <p class="section-intro">
-        Électronique embarquée, mécanique automobile et navigation autonome — des
-        projets qui combinent conception, programmation et résolution de problèmes.
+        Conception de cartes électroniques, électronique embarquée et mécanique
+        automobile — des projets qui combinent conception, programmation et
+        résolution de problèmes.
       </p>
 
       <div class="projects-grid">
+        <article class="proj-card" data-reveal>
+          <h3 class="proj-name">Ordinateur de vélo AeroTrail</h3>
+          <p class="proj-year">2026 · ENGR 390 · 6 personnes</p>
+          <p class="proj-desc">
+            Carte porteuse quatre couches conçue sous Altium Designer, de la capture
+            schématique au routage vérifié, livrée prête pour fabrication. Front-end RF
+            du récepteur GNSS (bias-tee 68 nH, ligne 50 Ω à impédance contrôlée,
+            protection ESD) et chaîne d'alimentation sur cellule 18650 stable sur toute
+            la décharge 4,2–2,5 V. Répartition des périphériques sur les bus I²C, SPI,
+            UART, GPIO et PWM, et participation à l'application Android compagnon.
+          </p>
+          <ul class="proj-tags">
+            <li>Altium Designer</li><li>PCB 4 couches</li><li>RF / GNSS</li>
+            <li>Électronique de puissance</li><li>Android</li>
+          </ul>
+        </article>
+
         <article class="proj-card" data-reveal>
           <h3 class="proj-name">Dispositif de télémétrie de course</h3>
           <p class="proj-year">2026</p>
@@ -207,24 +239,28 @@
 
         <article class="proj-card" data-reveal>
           <h3 class="proj-name">Diagnostic &amp; réparation automobile</h3>
-          <p class="proj-year">2022 — 2026</p>
+          <p class="proj-year">2023 — 2026 · Personnel</p>
           <p class="proj-desc">
             Plus de 15 000 $ de valeur ajoutée via réparations électriques complexes.
-            Réfection complète d'un moteur Hyundai V6 3.8L et transmission manuelle.
-            Impression 3D de composantes.
+            Diagnostic au scanner OBD-II et au multimètre — analyse des corrections de
+            carburant pour isoler le capteur à l'origine d'un mélange air/essence
+            déséquilibré. Réfection complète d'un moteur Hyundai LAMBDA II V6 3.8L et
+            de sa transmission manuelle M6VR2. Impression 3D de composantes.
           </p>
           <ul class="proj-tags">
-            <li>OBD-II</li><li>Multimètre</li><li>TinkerCAD</li><li>Impression 3D</li>
+            <li>OBD-II</li><li>Multimètre</li><li>Diagnostic moteur</li>
+            <li>Tinkercad</li><li>Impression 3D</li>
           </ul>
         </article>
 
         <article class="proj-card" data-reveal>
           <h3 class="proj-name">Aéroglisseur autonome</h3>
-          <p class="proj-year">2025 · ENGR 290</p>
+          <p class="proj-year">2025 · ENGR 290 · 5 personnes</p>
           <p class="proj-desc">
-            Projet de conception en équipe — calculs de puissance électrique,
-            sélection d'algorithme de navigation dans un labyrinthe, évaluation de
-            portance, poussée et stabilité.
+            Projet de conception en équipe — calculs de puissance électrique appuyant
+            le choix des batteries, des ventilateurs et des capteurs, sélection et
+            programmation de l'algorithme de navigation dans un labyrinthe, évaluation
+            de la portance, de la poussée et de la stabilité.
           </p>
           <ul class="proj-tags">
             <li>Navigation</li><li>Batteries</li><li>Algorithmes</li><li>Aérodynamique</li>
@@ -238,31 +274,59 @@
   <section class="section section--muted" id="skills" aria-labelledby="titre-competences">
     <div class="section-wrap">
       <span class="section-label">Compétences</span>
-      <h2 id="titre-competences">Outils, langues et <em>protocoles</em></h2>
+      <h2 id="titre-competences">Conception, instrumentation et <em>protocoles</em></h2>
 
       <div class="skills-grid">
+        <div class="skill-group" data-reveal>
+          <h3 class="skill-cat">Langages de programmation</h3>
+          <ul class="skill-pills">
+            <li>Python</li><li>C++</li><li>C</li><li>Java</li><li>Kotlin</li>
+          </ul>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3 class="skill-cat">Conception électrique</h3>
+          <ul class="skill-pills">
+            <li>AutoCAD Electrical</li><li>Altium Designer</li><li>PCB multicouche</li>
+            <li>Impédance contrôlée / RF</li><li>Électronique de puissance</li>
+          </ul>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3 class="skill-cat">Automatisation</h3>
+          <ul class="skill-pills">
+            <li>Ladder (LD)</li><li>Grafcet (SFC)</li>
+            <li>Automates Schneider (contrôle expert)</li>
+          </ul>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3 class="skill-cat">Instrumentation</h3>
+          <ul class="skill-pills">
+            <li>Oscilloscope</li><li>Multimètre</li>
+            <li>Alimentation de laboratoire</li><li>Soudure traversante</li>
+          </ul>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3 class="skill-cat">Simulation &amp; analyse</h3>
+          <ul class="skill-pills">
+            <li>MATLAB</li><li>Simulink</li><li>LTspice</li>
+          </ul>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3 class="skill-cat">Protocoles &amp; interfaces</h3>
+          <ul class="skill-pills">
+            <li>CAN bus</li><li>ARINC 429</li><li>I²C</li><li>SPI</li><li>UART</li>
+            <li>BLE / GATT</li><li>OBD-II</li>
+          </ul>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3 class="skill-cat">Outils</h3>
+          <ul class="skill-pills">
+            <li>Fusion 360</li><li>Tinkercad</li><li>Excel</li><li>Git</li>
+          </ul>
+        </div>
         <div class="skill-group" data-reveal>
           <h3 class="skill-cat">Langues</h3>
           <ul class="skill-pills">
             <li>Français (courant)</li><li>Anglais (courant)</li>
-          </ul>
-        </div>
-        <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Systèmes d'exploitation</h3>
-          <ul class="skill-pills">
-            <li>Windows</li><li>Linux</li><li>Red Hat</li>
-          </ul>
-        </div>
-        <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Logiciels &amp; Outils</h3>
-          <ul class="skill-pills">
-            <li>AutoCAD</li><li>Fusion 360</li><li>TinkerCAD</li><li>MATLAB</li><li>Excel</li>
-          </ul>
-        </div>
-        <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Protocoles &amp; Matériel</h3>
-          <ul class="skill-pills">
-            <li>CANBUS</li><li>ARINC</li><li>RFM</li><li>PLC</li><li>ESP32</li><li>OBD-II</li>
           </ul>
         </div>
       </div>

@@ -285,21 +285,66 @@
   margin-top: 1.25rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--border-gold);
+}
+
+/* Même traitement que `.skill-cat`, en version sur fond sombre. */
+.edu-courses-title {
+  margin-bottom: var(--space-md);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.edu-course-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem var(--space-xl);
   font-size: 0.9rem;
   color: var(--on-dark-muted);
 }
 
-.edu-courses strong {
+.edu-course-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  line-height: 1.5;
+}
+
+.edu-course-code {
+  flex-shrink: 0;
+  padding: 0.15rem 0.45rem;
+  background: rgba(184, 146, 46, 0.12);
+  border: 1px solid rgba(184, 146, 46, 0.28);
+  border-radius: var(--radius-xs);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   color: var(--gold-light);
+  white-space: nowrap;
+}
+
+/* Établissement d'accueil pour un cours suivi hors Concordia. */
+.edu-course-note {
+  font-size: 0.78rem;
+  color: var(--on-dark-faint);
+}
+
+.edu-course-note::before {
+  content: "· ";
 }
 
 /* ─────────────────────────────────────────────────────────
    5. PROJETS
    ───────────────────────────────────────────────────────── */
 
+/* Deux colonnes : quatre projets forment une grille 2×2 complète, et des
+   colonnes larges évitent les « rivières » du texte justifié. */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
   margin-top: 3.5rem;
 }
@@ -343,6 +388,11 @@
   font-size: var(--fs-small);
   line-height: 1.6;
   color: var(--on-dark-muted);
+  text-align: justify;
+  /* La césure automatique (lang="fr") évite les mots trop espacés en bout
+     de ligne, défaut classique du texte justifié en colonne étroite. */
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .proj-tags {
@@ -492,8 +542,8 @@
     flex-direction: column;
   }
 
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .edu-course-list {
+    grid-template-columns: 1fr;
   }
 
   .skills-grid {

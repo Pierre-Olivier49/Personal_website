@@ -9,6 +9,7 @@ Portfolio statique (HTML/CSS/JS), sans dépendance ni étape de build.
 ├── index.html         # Structure et contenu de la page
 ├── favicon.svg        # Icône d'onglet
 ├── robots.txt         # Directives pour les moteurs de recherche
+├── sitemap.xml        # Plan du site (mettre à jour `lastmod` après refonte)
 ├── css/
 │   ├── base.css       # Jetons de design, reset, typographie, utilitaires
 │   ├── layout.css     # En-tête, menu mobile, sections, pied de page
@@ -57,11 +58,12 @@ défilement ; l'ajouter à un nouveau bloc suffit.
 
 ## À compléter avant la mise en ligne
 
-1. Renseigner l'URL du site dans `index.html` (`<link rel="canonical">` et
-   `og:url`) et dans `robots.txt` (ligne `Sitemap`).
-2. Ajouter une image de partage (1200 × 630 px) déclarée via `og:image` — les
+1. Ajouter une image de partage (1200 × 630 px) déclarée via `og:image` — les
    aperçus LinkedIn en dépendent.
-3. Lier le CV en PDF depuis la section Contact.
+2. Déposer le CV en PDF à la racine et le lier depuis la section Contact.
+
+Le contenu suit le CV de septembre 2026 : après chaque mise à jour du CV,
+vérifier les sections Expérience, Éducation, Projets et Compétences.
 
 ## Déploiement
 

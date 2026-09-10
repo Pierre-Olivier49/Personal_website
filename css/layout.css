@@ -47,6 +47,12 @@
   text-decoration: none;
 }
 
+/* Le nom doit rester UN seul élément flex : sinon le `gap` de `.nav-logo`
+   s'insère aussi de part et d'autre du trait d'union. */
+.nav-logo-text {
+  white-space: nowrap;
+}
+
 .nav-logo-mark {
   width: 32px;
   height: 32px;
