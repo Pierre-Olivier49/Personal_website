@@ -1,0 +1,99 @@
+/* =========================================================
+   print.css — chargé avec media="print"
+   Transforme la page en CV lisible en noir et blanc.
+   ========================================================= */
+
+@page {
+  margin: 1.5cm;
+}
+
+.site-header,
+.mobile-menu,
+.skip-link,
+.hero-actions,
+.hero-bg-pattern,
+.hero-glow,
+.section--grid::before,
+.contact-icon {
+  display: none !important;
+}
+
+body {
+  background: #fff !important;
+  color: #000 !important;
+  font-size: 11pt;
+  line-height: 1.45;
+}
+
+.hero,
+.section,
+.section--dark,
+.section--muted,
+.edu-card,
+.proj-card,
+.exp-card,
+.hero-stat,
+.skill-group {
+  background: #fff !important;
+  color: #000 !important;
+  min-height: 0 !important;
+  border-color: #ccc !important;
+  box-shadow: none !important;
+}
+
+h1,
+h2,
+h3,
+.proj-name,
+.exp-role,
+.edu-degree,
+.hero-stat-num,
+.section--dark h2,
+.contact-item a,
+.proj-desc,
+.hero-desc,
+.section-intro,
+.section--dark .section-intro {
+  color: #000 !important;
+}
+
+h1 {
+  font-size: 24pt;
+}
+
+h2 {
+  font-size: 15pt;
+}
+
+.section,
+.hero {
+  padding: 0.5rem 0 !important;
+  page-break-inside: avoid;
+}
+
+.exp-card,
+.edu-card,
+.proj-card {
+  page-break-inside: avoid;
+  border: 1px solid #ccc !important;
+  padding: 0.75rem !important;
+  margin-top: 0.75rem !important;
+}
+
+.projects-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+/* Sur papier, la destination des liens est perdue : on l'écrit. */
+.contact-item a::after {
+  content: " (" attr(href) ")";
+  font-size: 9pt;
+  color: #555;
+}
+
+.contact-item a[href^="mailto:"]::after,
+.contact-item a[href^="tel:"]::after {
+  content: "";
+}

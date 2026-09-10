@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Décommenter et ajuster une fois le domaine final connu :
+# Sitemap: https://exemple.com/sitemap.xml
