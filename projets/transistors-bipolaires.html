@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr"
+      data-title-fr="Fabrication de transistors bipolaires NPN | Pierre-Olivier Marquis"
+      data-title-en="NPN bipolar transistor fabrication | Pierre-Olivier Marquis">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fabrication de transistors bipolaires NPN | Pierre-Olivier Marquis</title>
+  <meta name="description" content="Fabrication de transistors bipolaires NPN sur silicium en salle blanche, par le procédé planaire diffusé, puis test des transistors obtenus.">
+  <meta name="author" content="Pierre-Olivier Marquis">
+  <meta name="theme-color" content="#0d1f3c">
+
+  <link rel="canonical" href="https://pierreoliviermarquis.com/projets/transistors-bipolaires.html">
+  <link rel="alternate" hreflang="fr" href="https://pierreoliviermarquis.com/projets/transistors-bipolaires.html?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://pierreoliviermarquis.com/projets/transistors-bipolaires.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://pierreoliviermarquis.com/projets/transistors-bipolaires.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
+  <meta property="og:site_name" content="Pierre-Olivier Marquis">
+  <meta property="og:url" content="https://pierreoliviermarquis.com/projets/transistors-bipolaires.html">
+  <meta property="og:title" content="Fabrication de transistors bipolaires NPN | Pierre-Olivier Marquis">
+  <meta property="og:description" content="Fabrication de transistors bipolaires NPN sur silicium en salle blanche, par le procédé planaire diffusé, puis test des transistors obtenus.">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon-96.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Langue et « JS actif » avant le premier rendu (voir index.html). -->
+  <script>
+    (function (r) {
+      var l = null;
+      try { l = localStorage.getItem("lang"); } catch (e) {}
+      var q = /[?&]lang=(fr|en)\b/.exec(location.search);
+      if (q) l = q[1];
+      if (l !== "fr" && l !== "en") l = /^fr\b/i.test(navigator.language || "") ? "fr" : "en";
+      r.lang = l;
+      r.setAttribute("data-lang", l);
+      r.classList.add("js");
+    })(document.documentElement);
+  </script>
+
+  <!-- Même ordre que l'accueil, plus la feuille propre aux pages de projet. -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/project.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
+</head>
+
+<body>
+
+<a class="skip-link" href="#contenu"><span lang="fr">Aller au contenu principal</span><span lang="en">Skip to main content</span></a>
+
+<!-- ════════ EN-TÊTE ════════ -->
+<header class="site-header" data-header>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark" aria-hidden="true">PM</span>
+      <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
+    </a>
+
+    <div class="nav-right">
+      <nav data-aria-fr="Navigation principale" data-aria-en="Main navigation" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a></li>
+          <li><a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a></li>
+          <li><a href="../index.html#projects" class="is-active" aria-current="page"><span lang="fr">Projets</span><span lang="en">Projects</span></a></li>
+          <li><a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a></li>
+          <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switch" role="group" data-aria-fr="Langue" data-aria-en="Language" aria-label="Langue">
+        <button type="button" data-set-lang="fr" aria-pressed="true" title="Français">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden data-aria-fr="Navigation mobile" data-aria-en="Mobile navigation" aria-label="Navigation mobile">
+  <a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a>
+  <a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a>
+  <a href="../index.html#projects"><span lang="fr">Projets</span><span lang="en">Projects</span></a>
+  <a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a>
+  <a href="../index.html#contact" class="cta">Contact</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ════════ EN-TÊTE DU PROJET ════════ -->
+  <section class="section--dark section--grid proj-hero" aria-labelledby="titre-projet">
+    <div class="section-wrap">
+      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> <span lang="fr">Tous les projets</span><span lang="en">All projects</span></a>
+      <span class="section-label">ELEC 421</span>
+      <h1 id="titre-projet"><span lang="fr">Fabrication de <em>transistors bipolaires</em></span><span lang="en"><em>Bipolar transistor</em> fabrication</span></h1>
+      <ul class="proj-meta"><li>2026</li><li><span lang="fr">ELEC 421 · Dispositifs à semi-conducteurs</span><span lang="en">ELEC 421 · Solid State Devices</span></li><li><span lang="fr">Salle blanche</span><span lang="en">Cleanroom</span></li></ul>
+      <p class="proj-lede"><span lang="fr">Fabrication de transistors bipolaires NPN sur silicium en salle blanche, par le procédé planaire diffusé, puis test des transistors obtenus.</span><span lang="en">Fabricating NPN bipolar transistors on silicon in a cleanroom with the diffused planar process, then testing the resulting transistors.</span></p>
+      <ul class="proj-tags"><li><span lang="fr">Salle blanche</span><span lang="en">Cleanroom</span></li><li><span lang="fr">Photolithographie</span><span lang="en">Photolithography</span></li><li>Diffusion</li><li><span lang="fr">Oxydation thermique</span><span lang="en">Thermal oxidation</span></li><li><span lang="fr">Métallisation</span><span lang="en">Metallization</span></li></ul>
+    </div>
+  </section>
+
+  <!-- ════════ CONTENU ════════ -->
+  <section class="section">
+    <div class="section-wrap proj-body">
+      <div>
+        <section class="proj-section" aria-labelledby="titre-apercu">
+          <h2 class="proj-h2" id="titre-apercu"><span lang="fr">Aperçu</span><span lang="en">Overview</span></h2>
+          <p><span lang="fr">Le procédé planaire diffusé est à la base de la fabrication des circuits intégrés : on fait croître du SiO₂ sur le silicium, on l’ouvre là où il faut grâce à la photolithographie, et on diffuse les dopants à travers ces fenêtres. Les régions de base, d’émetteur et de collecteur se retrouvent toutes accessibles en surface, où l’on dépose ensuite les contacts d’aluminium.</span><span lang="en">The diffused planar process is the foundation of integrated circuit fabrication: SiO₂ is grown on the silicon, opened where needed with photolithography, and dopants are diffused through those windows. The base, emitter and collector regions all end up accessible at the surface, where the aluminum contacts are then deposited.</span></p>
+          <p><span lang="fr">En six séances de laboratoire, j’ai suivi les 14 étapes du procédé sur un substrat de type N, des premiers nettoyages jusqu’à l’alliage des contacts, puis testé les transistors fabriqués.</span><span lang="en">Over six lab sessions, I carried out the 14 process steps on an N-type substrate, from the first cleaning to alloying the contacts, then tested the fabricated transistors.</span></p>
+        </section>
+
+        <section class="proj-section" aria-labelledby="titre-realisations">
+          <h2 class="proj-h2" id="titre-realisations"><span lang="fr">Ce que j’ai réalisé</span><span lang="en">What I did</span></h2>
+          <ul class="exp-list">
+            <li><span lang="fr">Nettoyé les échantillons selon le procédé RCA (nettoyage organique, retrait de l’oxyde natif au HF, nettoyage ionique).</span><span lang="en">Cleaned the samples with the RCA process (organic clean, native oxide strip in HF, ionic clean).</span></li>
+            <li><span lang="fr">Fait croître l’oxyde de masquage par oxydation thermique humide à 1100 °C (environ 0,6 µm en 51 min).</span><span lang="en">Grew the masking oxide by wet thermal oxidation at 1100 °C (about 0.6 µm in 51 min).</span></li>
+            <li><span lang="fr">Réalisé la photolithographie sur trois masques (base, émetteur-collecteur, contacts) et la gravure du SiO₂ au HF tamponné.</span><span lang="en">Performed photolithography with three masks (base, emitter-collector, contacts) and etched the SiO₂ in buffered HF.</span></li>
+            <li><span lang="fr">Diffusé le bore pour former la base (prédépôt de 2 h 49 à 1100 °C, jonction visée à 2,6 µm), puis le phosphore pour l’émetteur et le collecteur.</span><span lang="en">Diffused boron to form the base (2 h 49 min predeposition at 1100 °C, 2.6 µm target junction), then phosphorus for the emitter and collector.</span></li>
+            <li><span lang="fr">Déposé les contacts d’aluminium par évaporation sous vide et lift-off, puis allié les contacts à 450 °C sous hydrogène.</span><span lang="en">Deposited the aluminum contacts by vacuum evaporation and lift-off, then alloyed them at 450 °C in hydrogen.</span></li>
+            <li><span lang="fr">Relié les temps de procédé aux modèles d’oxydation (Deal-Grove) et de diffusion (erfc pour le prédépôt, gaussien pour la redistribution), puis testé les transistors fabriqués.</span><span lang="en">Tied the process times to the oxidation (Deal-Grove) and diffusion models (erfc for predeposition, Gaussian for drive-in), then tested the fabricated transistors.</span></li>
+          </ul>
+        </section>
+
+        <!-- Pour ajouter des photos : déposer les images dans img/projets/
+             et insérer ici une <figure> avec <img src="../img/projets/…"
+             alt="…" loading="lazy"> et une <figcaption>. -->
+      </div>
+
+      <aside class="proj-aside" data-aria-fr="Fiche technique" data-aria-en="Technical summary" aria-label="Fiche technique">
+        <div class="proj-panel">
+          <h2 class="proj-panel-title"><span lang="fr">Chiffres clés</span><span lang="en">Key figures</span></h2>
+          <ul class="proj-stats">
+            <li><span class="proj-stat-num">14</span><span class="proj-stat-label"><span lang="fr">Étapes du procédé</span><span lang="en">Process steps</span></span></li>
+            <li><span class="proj-stat-num">3</span><span class="proj-stat-label"><span lang="fr">Masques</span><span lang="en">Masks</span></span></li>
+            <li><span class="proj-stat-num">1100 °C</span><span class="proj-stat-label"><span lang="fr">Oxydation et diffusion</span><span lang="en">Oxidation and diffusion</span></span></li>
+            <li><span class="proj-stat-num"><span lang="fr">2,6 µm</span><span lang="en">2.6 µm</span></span><span class="proj-stat-label"><span lang="fr">Profondeur de jonction visée</span><span lang="en">Target junction depth</span></span></li>
+            <li><span class="proj-stat-num"><span lang="fr">0,6 µm</span><span lang="en">0.6 µm</span></span><span class="proj-stat-label"><span lang="fr">Oxyde de masquage</span><span lang="en">Masking oxide</span></span></li>
+            <li><span class="proj-stat-num">450 °C</span><span class="proj-stat-label"><span lang="fr">Alliage des contacts</span><span lang="en">Contact alloying</span></span></li>
+          </ul>
+        </div>
+
+        <div class="proj-panel">
+          <h2 class="proj-panel-title">Technologies</h2>
+          <ul class="skill-pills"><li><span lang="fr">Nettoyage RCA</span><span lang="en">RCA cleaning</span></li><li><span lang="fr">Oxydation humide</span><span lang="en">Wet oxidation</span></li><li><span lang="fr">Photolithographie</span><span lang="en">Photolithography</span></li><li><span lang="fr">Gravure HF</span><span lang="en">HF etching</span></li><li><span lang="fr">Diffusion bore / phosphore</span><span lang="en">Boron / phosphorus diffusion</span></li><li><span lang="fr">Évaporation sous vide</span><span lang="en">Vacuum evaporation</span></li><li>Lift-off</li><li><span lang="fr">Alliage des contacts</span><span lang="en">Contact alloying</span></li></ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ════════ AUTRES PROJETS ════════ -->
+  <section class="section section--muted section--pager" data-aria-fr="Autres projets" data-aria-en="Other projects" aria-label="Autres projets">
+    <div class="section-wrap">
+      <nav class="proj-pager" data-aria-fr="Projet précédent et suivant" data-aria-en="Previous and next project" aria-label="Projet précédent et suivant">
+        <a href="aerotrail.html" rel="prev">
+          <span class="proj-pager-dir"><span lang="fr">← Projet précédent</span><span lang="en">← Previous project</span></span>
+          <span class="proj-pager-name"><span lang="fr">Ordinateur de vélo AeroTrail</span><span lang="en">AeroTrail bike computer</span></span>
+        </a>
+        <a class="proj-pager-next" href="palan-industriel.html" rel="next">
+          <span class="proj-pager-dir"><span lang="fr">Projet suivant →</span><span lang="en">Next project →</span></span>
+          <span class="proj-pager-name"><span lang="fr">Automatisation d’un palan industriel</span><span lang="en">Industrial hoist automation</span></span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════ PIED DE PAGE ════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="../index.html" class="footer-logo">
+      <span class="footer-logo-mark" aria-hidden="true">PM</span>
+      <span class="footer-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
+    </a>
+    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></p>
+  </div>
+</footer>
+
+</body>
+</html>
