@@ -161,7 +161,7 @@
         </div>
         <ul class="exp-list">
           <li>Conception et amélioration de l'architecture électrique du banc d'essai du programme GLOBAL pour plus de 1 000 paramètres via des schémas AutoCAD.</li>
-          <li>Développement de procédures de test pour l'arrêt d'urgence, la distribution de puissance, la mise à terre, le PLC et les châssis informatiques.</li>
+          <li>Développement de procédures de test pour l'arrêt d'urgence, la distribution de puissance, la mise à la terre, le PLC et les châssis informatiques.</li>
           <li>Résolution de 50+ problèmes électriques, réseaux et logiciels — lecture/injection de signaux, validation de protocoles CANBUS, ARINC et RFM, et simulation.</li>
           <li>Évaluation, commande et installation de cartes électroniques, configuration sous Linux Red Hat et Windows, et maintenance d'une base de données de 1 000+ connexions matérielles/logicielles.</li>
         </ul>
@@ -191,6 +191,8 @@
             <li><span class="edu-course-code">ELEC 312</span> Électronique II</li>
             <li><span class="edu-course-code">ELEC 351</span> Ondes électromagnétiques et structures de guidage</li>
             <li><span class="edu-course-code">ELEC 331</span> Génie de la puissance</li>
+            <li><span class="edu-course-code">ELEC 421</span> Dispositifs à semi-conducteurs</li>
+            <li><span class="edu-course-code">ELEC 439</span> Conception et commandes de systèmes pour véhicules électriques</li>
             <li>
               <span class="edu-course-code">ELE8202</span>
               Commande de procédés industriels
@@ -208,70 +210,66 @@
       <span class="section-label">Projets</span>
       <h2 id="titre-projets">Des projets concrets, du <em>terrain au code</em></h2>
       <p class="section-intro">
-        Conception de cartes électroniques, électronique embarquée et mécanique
-        automobile — des projets qui combinent conception, programmation et
-        résolution de problèmes.
+        Systèmes de puissance, cartes électroniques, automatisation industrielle et
+        semi-conducteurs — chaque projet a sa page, avec les détails techniques.
       </p>
 
       <div class="projects-grid">
+        <article class="proj-card proj-card--featured" data-reveal>
+          <h3 class="proj-name"><a href="projets/robot-inspection-conduites.html">Robot autonome d’inspection de conduites</a></h3>
+          <p class="proj-year">2026 — 2027 · Projet de fin d’études</p>
+          <p class="proj-desc">Architecture de puissance complète du robot, des composants jusqu’au brochage du contrôleur : rail principal de 24 V, bloc-batterie Li-ion 6S de 91 Wh avec BMS, deux convertisseurs 5 V et surveillance de l’état de charge et de santé de la batterie. Conçu, puis construit et câblé.</p>
+          <ul class="proj-tags"><li>Li-ion 6S</li><li>BMS</li><li>SOC / SOH</li><li>Architecture de puissance</li></ul>
+          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+        </article>
+
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name">Ordinateur de vélo AeroTrail</h3>
+          <h3 class="proj-name"><a href="projets/aerotrail.html">Ordinateur de vélo AeroTrail</a></h3>
           <p class="proj-year">2026 · ENGR 390 · 6 personnes</p>
-          <p class="proj-desc">
-            Carte porteuse quatre couches conçue sous Altium Designer, de la capture
-            schématique au routage vérifié, livrée prête pour fabrication. Front-end RF
-            du récepteur GNSS (bias-tee 68 nH, ligne 50 Ω à impédance contrôlée,
-            protection ESD) et chaîne d'alimentation sur cellule 18650 stable sur toute
-            la décharge 4,2–2,5 V. Répartition des périphériques sur les bus I²C, SPI,
-            UART, GPIO et PWM, et participation à l'application Android compagnon.
-          </p>
-          <ul class="proj-tags">
-            <li>Altium Designer</li><li>PCB 4 couches</li><li>RF / GNSS</li>
-            <li>Électronique de puissance</li><li>Android</li>
-          </ul>
+          <p class="proj-desc">Carte porteuse quatre couches conçue sous Altium Designer et livrée prête pour fabrication : front-end RF du récepteur GNSS à impédance contrôlée et chaîne d’alimentation sur cellule 18650 stable sur toute la décharge.</p>
+          <ul class="proj-tags"><li>Altium Designer</li><li>PCB 4 couches</li><li>RF / GNSS</li><li>Électronique de puissance</li></ul>
+          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name">Dispositif de télémétrie de course</h3>
+          <h3 class="proj-name"><a href="projets/palan-industriel.html">Automatisation d’un palan industriel</a></h3>
+          <p class="proj-year">2026 · ELE8202 · Polytechnique Montréal</p>
+          <p class="proj-desc">Automatisme séquentiel d’un palan à deux axes sur automate Modicon M340, en Grafcet et Ladder : quatre modes, positionnement en boucle fermée par encodeurs, arrêt d’urgence et IHM sur écran tactile Magelis.</p>
+          <ul class="proj-tags"><li>Modicon M340</li><li>Grafcet</li><li>Ladder</li><li>IHM Magelis</li></ul>
+          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+        </article>
+
+        <article class="proj-card" data-reveal>
+          <h3 class="proj-name"><a href="projets/telemetrie-course.html">Dispositif de télémétrie de course</a></h3>
           <p class="proj-year">2026</p>
-          <p class="proj-desc">
-            Appareil de télémétrie véhiculaire en temps réel avec ESP32, GPS, IMU,
-            écran OLED et enregistrement microSD. Algorithmes de filtrage pour la
-            vitesse, les forces G, le 0-100 et le quart de mille.
-          </p>
-          <ul class="proj-tags">
-            <li>ESP32</li><li>C++</li><li>GPS</li><li>IMU</li><li>Embarqué</li>
-          </ul>
+          <p class="proj-desc">Appareil de télémétrie véhiculaire en temps réel avec ESP32, GPS, IMU, écran OLED et enregistrement microSD. Algorithmes de filtrage pour la vitesse, les forces G, le 0-100 et le quart de mille.</p>
+          <ul class="proj-tags"><li>ESP32</li><li>C++</li><li>GPS</li><li>IMU</li><li>Embarqué</li></ul>
+          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name">Diagnostic &amp; réparation automobile</h3>
+          <h3 class="proj-name"><a href="projets/diagnostic-automobile.html">Diagnostic &amp; réparation automobile</a></h3>
           <p class="proj-year">2023 — 2026 · Personnel</p>
-          <p class="proj-desc">
-            Plus de 15 000 $ de valeur ajoutée via réparations électriques complexes.
-            Diagnostic au scanner OBD-II et au multimètre — analyse des corrections de
-            carburant pour isoler le capteur à l'origine d'un mélange air/essence
-            déséquilibré. Réfection complète d'un moteur Hyundai LAMBDA II V6 3.8L et
-            de sa transmission manuelle M6VR2. Impression 3D de composantes.
-          </p>
-          <ul class="proj-tags">
-            <li>OBD-II</li><li>Multimètre</li><li>Diagnostic moteur</li>
-            <li>Tinkercad</li><li>Impression 3D</li>
-          </ul>
+          <p class="proj-desc">Plus de 15 000 $ de valeur ajoutée par des réparations électriques complexes. Diagnostic au scanner OBD-II et au multimètre, analyse des corrections de carburant, et réfection complète d’un moteur V6 3.8L et de sa transmission manuelle.</p>
+          <ul class="proj-tags"><li>OBD-II</li><li>Multimètre</li><li>Diagnostic moteur</li><li>Impression 3D</li></ul>
+          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name">Aéroglisseur autonome</h3>
+          <h3 class="proj-name"><a href="projets/aeroglisseur-autonome.html">Aéroglisseur autonome</a></h3>
           <p class="proj-year">2025 · ENGR 290 · 5 personnes</p>
-          <p class="proj-desc">
-            Projet de conception en équipe — calculs de puissance électrique appuyant
-            le choix des batteries, des ventilateurs et des capteurs, sélection et
-            programmation de l'algorithme de navigation dans un labyrinthe, évaluation
-            de la portance, de la poussée et de la stabilité.
-          </p>
-          <ul class="proj-tags">
-            <li>Navigation</li><li>Batteries</li><li>Algorithmes</li><li>Aérodynamique</li>
-          </ul>
+          <p class="proj-desc">Calculs de puissance électrique appuyant le choix des batteries, des ventilateurs et des capteurs, algorithme de navigation dans un labyrinthe, et évaluation de la portance, de la poussée et de la stabilité.</p>
+          <ul class="proj-tags"><li>Navigation</li><li>Batteries</li><li>Algorithmes</li><li>Aérodynamique</li></ul>
+          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+        </article>
+
+        <article class="proj-card" data-reveal>
+          <p class="proj-status">En cours</p>
+          <h3 class="proj-name"><a href="projets/cristal-silicium.html">Croissance d’un cristal de silicium</a></h3>
+          <p class="proj-year">2026 · ELEC 421</p>
+          <p class="proj-desc">Croissance d’un cristal de silicium en laboratoire, dans le cadre du cours de dispositifs à semi-conducteurs. Méthode et résultats à venir.</p>
+          <ul class="proj-tags"><li>Semi-conducteurs</li><li>Silicium</li><li>Laboratoire</li></ul>
+          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
         </article>
       </div>
     </div>
@@ -281,34 +279,31 @@
   <section class="section section--muted" id="skills" aria-labelledby="titre-competences">
     <div class="section-wrap">
       <span class="section-label">Compétences</span>
-      <h2 id="titre-competences">Conception, instrumentation et <em>protocoles</em></h2>
+      <h2 id="titre-competences">Puissance, conception et <em>automatisation</em></h2>
 
       <div class="skills-grid">
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Langages de programmation</h3>
+          <h3 class="skill-cat">Énergie &amp; puissance</h3>
           <ul class="skill-pills">
-            <li>Python</li><li>C++</li><li>C</li><li>Java</li><li>Kotlin</li>
+            <li>Architecture de puissance</li><li>Batteries Li-ion &amp; BMS (SOC, SOH)</li><li>Distribution de puissance</li><li>Mise à la terre</li><li>Conversion CC-CC</li><li>Électronique de puissance</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Conception électrique</h3>
+          <h3 class="skill-cat">Conception électronique</h3>
           <ul class="skill-pills">
-            <li>AutoCAD Electrical</li><li>Altium Designer</li><li>PCB multicouche</li>
-            <li>Impédance contrôlée / RF</li><li>Électronique de puissance</li>
+            <li>AutoCAD Electrical</li><li>Altium Designer</li><li>PCB multicouche</li><li>Impédance contrôlée / RF</li><li>Dispositifs à semi-conducteurs</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Automatisation</h3>
+          <h3 class="skill-cat">Automatisation &amp; commande</h3>
           <ul class="skill-pills">
-            <li>Ladder (LD)</li><li>Grafcet (SFC)</li>
-            <li>Automates Schneider (contrôle expert)</li>
+            <li>Automates Schneider Modicon M340 (Control Expert)</li><li>Ladder (LD)</li><li>Grafcet (SFC)</li><li>IHM Magelis</li><li>Encodeurs</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Instrumentation</h3>
+          <h3 class="skill-cat">Instrumentation &amp; test</h3>
           <ul class="skill-pills">
-            <li>Oscilloscope</li><li>Multimètre</li>
-            <li>Alimentation de laboratoire</li><li>Soudure traversante</li>
+            <li>Oscilloscope</li><li>Multimètre</li><li>Alimentation de laboratoire</li><li>Lecture / injection de signaux</li><li>Soudure</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
@@ -320,14 +315,13 @@
         <div class="skill-group" data-reveal>
           <h3 class="skill-cat">Protocoles &amp; interfaces</h3>
           <ul class="skill-pills">
-            <li>CAN bus</li><li>ARINC 429</li><li>I²C</li><li>SPI</li><li>UART</li>
-            <li>BLE / GATT</li><li>OBD-II</li>
+            <li>CAN bus</li><li>ARINC 429</li><li>I²C</li><li>SPI</li><li>UART</li><li>BLE / GATT</li><li>OBD-II</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Outils</h3>
+          <h3 class="skill-cat">Programmation &amp; outils</h3>
           <ul class="skill-pills">
-            <li>Fusion 360</li><li>Tinkercad</li><li>Excel</li><li>Git</li>
+            <li>Python</li><li>C++</li><li>C</li><li>Java</li><li>Kotlin</li><li>Git</li><li>Excel</li><li>Fusion 360</li><li>Tinkercad</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
@@ -346,7 +340,7 @@
       <span class="section-label">Contact</span>
       <h2 id="titre-contact">Travaillons <em>ensemble</em></h2>
       <p class="section-intro">
-        Disponible pour stages et opportunités co-op en génie électrique.
+        Disponible à temps plein en génie électrique dès mai 2027.
       </p>
 
       <ul class="contact-row">

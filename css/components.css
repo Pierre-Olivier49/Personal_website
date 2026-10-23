@@ -340,8 +340,9 @@
    5. PROJETS
    ───────────────────────────────────────────────────────── */
 
-/* Deux colonnes : quatre projets forment une grille 2×2 complète, et des
-   colonnes larges évitent les « rivières » du texte justifié. */
+/* Deux colonnes : le projet phare prend toute la largeur et les six autres
+   forment une grille 2×3 complète. Des colonnes larges évitent les
+   « rivières » du texte justifié. */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -410,6 +411,80 @@
   font-size: 0.7rem;
   letter-spacing: 0.03em;
   color: var(--gold-light);
+}
+
+/* Toute la carte mène à la page du projet : le lien du titre s'étend
+   sur la carte entière, ce qui garde un seul lien par carte pour les
+   lecteurs d'écran. */
+.proj-card {
+  position: relative;
+}
+
+.proj-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.proj-name a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.proj-name a:focus-visible {
+  outline: none;
+}
+
+.proj-card:focus-within {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+.proj-more {
+  margin-top: var(--space-md);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--gold-light);
+}
+
+.proj-more span {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.proj-card:hover .proj-more span {
+  transform: translateX(4px);
+}
+
+/* Projet phare : pleine largeur au-dessus des autres. */
+.proj-card--featured {
+  grid-column: 1 / -1;
+  padding: 2.25rem;
+  border-color: var(--border-gold-strong);
+}
+
+.proj-card--featured .proj-name {
+  font-size: 1.6rem;
+}
+
+.proj-card--featured .proj-desc {
+  max-width: 760px;
+  font-size: 0.95rem;
+}
+
+.proj-status {
+  align-self: flex-start;
+  margin-bottom: var(--space-sm);
+  padding: 0.15rem 0.6rem;
+  background: var(--gold);
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -558,6 +633,10 @@
 @media (max-width: 600px) {
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .proj-card--featured {
+    padding: 1.75rem;
   }
 
   .contact-row {

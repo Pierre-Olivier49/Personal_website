@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Automatisation d’un palan industriel | Pierre-Olivier Marquis</title>
+  <meta name="description" content="Automatisation complète d’un palan à deux axes qui transporte des pièces entre des cuves de traitement, sur un automate Schneider Modicon M340, à partir d’un cahier des charges industriel.">
+  <meta name="author" content="Pierre-Olivier Marquis">
+  <meta name="theme-color" content="#0d1f3c">
+
+  <link rel="canonical" href="https://pierreoliviermarquis.com/projets/palan-industriel.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:site_name" content="Pierre-Olivier Marquis">
+  <meta property="og:url" content="https://pierreoliviermarquis.com/projets/palan-industriel.html">
+  <meta property="og:title" content="Automatisation d’un palan industriel | Pierre-Olivier Marquis">
+  <meta property="og:description" content="Automatisation complète d’un palan à deux axes qui transporte des pièces entre des cuves de traitement, sur un automate Schneider Modicon M340, à partir d’un cahier des charges industriel.">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon-96.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Même ordre que l'accueil, plus la feuille propre aux pages de projet. -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/project.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+<!-- ════════ EN-TÊTE ════════ -->
+<header class="site-header" data-header>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark" aria-hidden="true">PM</span>
+      <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
+    </a>
+
+    <nav aria-label="Navigation principale">
+      <ul class="nav-links">
+        <li><a href="../index.html#experience">Expérience</a></li>
+        <li><a href="../index.html#education">Éducation</a></li>
+        <li><a href="../index.html#projects" class="is-active" aria-current="page">Projets</a></li>
+        <li><a href="../index.html#skills">Compétences</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" type="button" data-nav-toggle
+            aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden aria-label="Navigation mobile">
+  <a href="../index.html#experience">Expérience</a>
+  <a href="../index.html#education">Éducation</a>
+  <a href="../index.html#projects">Projets</a>
+  <a href="../index.html#skills">Compétences</a>
+  <a href="../index.html#contact" class="cta">Contact</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ════════ EN-TÊTE DU PROJET ════════ -->
+  <section class="section--dark section--grid proj-hero" aria-labelledby="titre-projet">
+    <div class="section-wrap">
+      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
+      <span class="section-label">ELE8202 · Polytechnique Montréal</span>
+      <h1 id="titre-projet">Automatisation d’un <em>palan industriel</em></h1>
+      <ul class="proj-meta"><li>2026</li><li>ELE8202 · Polytechnique Montréal</li><li>Équipe de 2</li></ul>
+      <p class="proj-lede">Automatisation complète d’un palan à deux axes qui transporte des pièces entre des cuves de traitement, sur un automate Schneider Modicon M340, à partir d’un cahier des charges industriel.</p>
+      <ul class="proj-tags"><li>Modicon M340</li><li>Grafcet</li><li>Ladder</li><li>IHM Magelis</li><li>Encodeurs</li></ul>
+    </div>
+  </section>
+
+  <!-- ════════ CONTENU ════════ -->
+  <section class="section">
+    <div class="section-wrap proj-body">
+      <div>
+        <section class="proj-section" aria-labelledby="titre-apercu">
+          <h2 class="proj-h2" id="titre-apercu">Aperçu</h2>
+          <p>Le système est un montage de palan industriel : deux moteurs indépendants déplacent la charge à l’horizontale et à la verticale, et la pièce doit passer par différentes cuves de trempage selon une séquence choisie par l’opérateur.</p>
+          <p>Le cahier des charges, volontairement désordonné comme en industrie, impose quatre modes de fonctionnement, un positionnement précis en boucle fermée et des sécurités qui s’appliquent en tout temps. La conception s’est faite d’abord sur papier en Grafcet, puis en programmation et mise au point sur l’automate.</p>
+        </section>
+
+        <section class="proj-section" aria-labelledby="titre-realisations">
+          <h2 class="proj-h2" id="titre-realisations">Ce que j’ai réalisé</h2>
+          <ul class="exp-list">
+            <li>Conçu et programmé l’automatisme séquentiel sur automate Modicon M340 en Grafcet et Ladder à partir d’un cahier des charges : modes initialisation, manuel, manuel assisté et automatique.</li>
+            <li>Implanté le positionnement en boucle fermée à deux vitesses à partir des encodeurs optiques lus par un module de comptage rapide.</li>
+            <li>Intégré les sécurités : arrêt d’urgence, maintien du palan dans son plan de travail, verrouillage logiciel des commandes contradictoires des moteurs.</li>
+            <li>Développé l’interface homme-machine sur écran tactile Magelis : position X-Y, état du système, messages et consignes.</li>
+          </ul>
+        </section>
+
+        <!-- Pour ajouter des photos : déposer les images dans img/projets/
+             et insérer ici une <figure> avec <img src="../img/projets/…"
+             alt="…" loading="lazy"> et une <figcaption>. -->
+      </div>
+
+      <aside class="proj-aside" aria-label="Fiche technique">
+        <div class="proj-panel">
+          <h2 class="proj-panel-title">Chiffres clés</h2>
+          <ul class="proj-stats">
+            <li><span class="proj-stat-num">2</span><span class="proj-stat-label">Axes motorisés</span></li>
+            <li><span class="proj-stat-num">4</span><span class="proj-stat-label">Modes de fonctionnement</span></li>
+            <li><span class="proj-stat-num">4</span><span class="proj-stat-label">Cuves de traitement</span></li>
+            <li><span class="proj-stat-num">2</span><span class="proj-stat-label">Vitesses en boucle fermée</span></li>
+          </ul>
+        </div>
+
+        <div class="proj-panel">
+          <h2 class="proj-panel-title">Technologies</h2>
+          <ul class="skill-pills"><li>Schneider Modicon M340</li><li>Control Expert</li><li>Grafcet (SFC)</li><li>Ladder (LD)</li><li>Comptage rapide</li><li>IHM Magelis</li></ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ════════ AUTRES PROJETS ════════ -->
+  <section class="section section--muted section--pager" aria-label="Autres projets">
+    <div class="section-wrap">
+      <nav class="proj-pager" aria-label="Projet précédent et suivant">
+        <a href="aerotrail.html" rel="prev">
+          <span class="proj-pager-dir">← Projet précédent</span>
+          <span class="proj-pager-name">Ordinateur de vélo AeroTrail</span>
+        </a>
+        <a class="proj-pager-next" href="telemetrie-course.html" rel="next">
+          <span class="proj-pager-dir">Projet suivant →</span>
+          <span class="proj-pager-name">Dispositif de télémétrie de course</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════ PIED DE PAGE ════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="../index.html" class="footer-logo">
+      <span class="footer-logo-mark" aria-hidden="true">PM</span>
+      <span class="footer-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
+    </a>
+    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · Tous droits réservés</p>
+  </div>
+</footer>
+
+</body>
+</html>

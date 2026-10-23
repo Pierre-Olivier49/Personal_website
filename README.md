@@ -9,7 +9,8 @@ En ligne : [pierreoliviermarquis.com](https://pierreoliviermarquis.com)
 
 ```
 .
-├── index.html            # Tout le contenu de la page
+├── index.html            # Page d'accueil
+├── projets/              # Une page par projet, liée depuis les cartes de l'accueil
 ├── favicon.ico           # Icône PM reprise par Google dans les résultats
 ├── favicon.svg           # Même icône en vectoriel, pour les navigateurs
 ├── favicon-96.png        # Version 96 px (Google demande un multiple de 48)
@@ -20,6 +21,7 @@ En ligne : [pierreoliviermarquis.com](https://pierreoliviermarquis.com)
 │   ├── base.css          # Variables, reset, typographie
 │   ├── layout.css        # En-tête, menu mobile, sections, pied de page
 │   ├── components.css    # Boutons, cartes de projet, compétences, contact
+│   ├── project.css       # Gabarit des pages de projet (projets/)
 │   └── print.css         # Version imprimable
 └── js/
     ├── navigation.js     # Menu mobile, en-tête au défilement, lien actif
