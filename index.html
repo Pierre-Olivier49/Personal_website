@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"
+      data-title-fr="Pierre-Olivier Marquis | Ingénieur électrique"
+      data-title-en="Pierre-Olivier Marquis | Electrical Engineer">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +12,16 @@
   <meta name="theme-color" content="#0d1f3c">
 
   <link rel="canonical" href="https://pierreoliviermarquis.com/">
+  <!-- Le site est bilingue sur une seule URL ; ?lang= force la langue. -->
+  <link rel="alternate" hreflang="fr" href="https://pierreoliviermarquis.com/?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://pierreoliviermarquis.com/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://pierreoliviermarquis.com/">
 
   <!-- Aperçu sur les réseaux sociaux.
        Reste à ajouter : og:image (1200x630). -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
   <meta property="og:site_name" content="Pierre-Olivier Marquis">
   <meta property="og:url" content="https://pierreoliviermarquis.com/">
   <meta property="og:title" content="Pierre-Olivier Marquis | Ingénieur électrique">
@@ -34,6 +41,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Avant tout rendu : choisit la langue (choix mémorisé, puis ?lang=, puis
+       langue du navigateur) et marque la page « JS actif », pour que ni la
+       mauvaise langue ni les animations d'apparition ne s'affichent un instant. -->
+  <script>
+    (function (r) {
+      var l = null;
+      try { l = localStorage.getItem("lang"); } catch (e) {}
+      var q = /[?&]lang=(fr|en)\b/.exec(location.search);
+      if (q) l = q[1];
+      if (l !== "fr" && l !== "en") l = /^fr\b/i.test(navigator.language || "") ? "fr" : "en";
+      r.lang = l;
+      r.setAttribute("data-lang", l);
+      r.classList.add("js");
+    })(document.documentElement);
+  </script>
+
   <!-- Ordre important : base (jetons + reset) → gabarit → composants. -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -42,10 +65,7 @@
 
   <script src="js/navigation.js" defer></script>
   <script src="js/main.js" defer></script>
-
-  <!-- Marque la page comme « JS actif » avant le premier rendu, pour que les
-       animations d'apparition ne masquent jamais le contenu sans JavaScript. -->
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/i18n.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -67,7 +87,7 @@
 
 <body>
 
-<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+<a class="skip-link" href="#contenu"><span lang="fr">Aller au contenu principal</span><span lang="en">Skip to main content</span></a>
 
 <!-- ════════ EN-TÊTE ════════ -->
 <header class="site-header" data-header>
@@ -77,30 +97,38 @@
       <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
 
-    <nav aria-label="Navigation principale">
-      <ul class="nav-links">
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#education">Éducation</a></li>
-        <li><a href="#projects">Projets</a></li>
-        <li><a href="#skills">Compétences</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-right">
+      <nav data-aria-fr="Navigation principale" data-aria-en="Main navigation" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a></li>
+          <li><a href="#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a></li>
+          <li><a href="#projects"><span lang="fr">Projets</span><span lang="en">Projects</span></a></li>
+          <li><a href="#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
 
-    <button class="nav-toggle" type="button" data-nav-toggle
-            aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
+      <div class="lang-switch" role="group" data-aria-fr="Langue" data-aria-en="Language" aria-label="Langue">
+        <!-- Pas d'attribut lang ici : base.css masquerait le bouton de l'autre langue. -->
+        <button type="button" data-set-lang="fr" aria-pressed="true" title="Français">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden aria-label="Navigation mobile">
-  <a href="#experience">Expérience</a>
-  <a href="#education">Éducation</a>
-  <a href="#projects">Projets</a>
-  <a href="#skills">Compétences</a>
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden data-aria-fr="Navigation mobile" data-aria-en="Mobile navigation" aria-label="Navigation mobile">
+  <a href="#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a>
+  <a href="#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a>
+  <a href="#projects"><span lang="fr">Projets</span><span lang="en">Projects</span></a>
+  <a href="#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a>
   <a href="#contact" class="cta">Contact</a>
 </nav>
 
@@ -112,30 +140,33 @@
     <div class="hero-glow" aria-hidden="true"></div>
 
     <div class="hero-inner">
-      <p class="hero-badge">Génie Électrique · Université Concordia · Co-op</p>
+      <p class="hero-badge"><span lang="fr">Génie Électrique · Université Concordia · Co-op</span><span lang="en">Electrical Engineering · Concordia University · Co-op</span></p>
       <h1 id="titre-accueil">
         Pierre<span class="name-dash">-</span>Olivier<br>
         <em>Marquis</em>
       </h1>
       <p class="hero-desc">
-        Étudiant en génie électrique à l'Université Concordia — passionné par les
+        <span lang="fr">Étudiant en génie électrique à l'Université Concordia — passionné par les
         systèmes embarqués, l'architecture de puissance et la résolution de problèmes
-        complexes en industrie.
+        complexes en industrie.</span>
+        <span lang="en">Electrical engineering student at Concordia University — passionate about
+        embedded systems, power architecture and solving complex problems in
+        industry.</span>
       </p>
 
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Me contacter</a>
-        <a href="#projects" class="btn-outline">Voir mes projets</a>
+        <a href="#contact" class="btn-primary"><span lang="fr">Me contacter</span><span lang="en">Contact me</span></a>
+        <a href="#projects" class="btn-outline"><span lang="fr">Voir mes projets</span><span lang="en">See my projects</span></a>
       </div>
 
       <ul class="hero-stats">
         <li class="hero-stat">
           <span class="hero-stat-num">Concordia</span>
-          <span class="hero-stat-label">University</span>
+          <span class="hero-stat-label"><span lang="fr">Université</span><span lang="en">University</span></span>
         </li>
         <li class="hero-stat">
           <span class="hero-stat-num">2027</span>
-          <span class="hero-stat-label">Diplôme prévu</span>
+          <span class="hero-stat-label"><span lang="fr">Diplôme prévu</span><span lang="en">Expected graduation</span></span>
         </li>
       </ul>
     </div>
@@ -144,26 +175,28 @@
   <!-- ════════ EXPÉRIENCE ════════ -->
   <section class="section section--muted" id="experience" aria-labelledby="titre-experience">
     <div class="section-wrap">
-      <span class="section-label">Expérience professionnelle</span>
-      <h2 id="titre-experience">Conception électrique chez <em>Bombardier</em></h2>
+      <span class="section-label"><span lang="fr">Expérience professionnelle</span><span lang="en">Professional experience</span></span>
+      <h2 id="titre-experience"><span lang="fr">Conception électrique chez <em>Bombardier</em></span><span lang="en">Electrical design at <em>Bombardier</em></span></h2>
       <p class="section-intro">
-        Banc d'essai du programme GLOBAL — architecture électrique, tests et
-        résolution de problèmes pour l'aéronautique.
+        <span lang="fr">Banc d'essai du programme GLOBAL — architecture électrique, tests et
+        résolution de problèmes pour l'aéronautique.</span>
+        <span lang="en">GLOBAL program test bench — electrical architecture, testing and
+        troubleshooting for aerospace.</span>
       </p>
 
       <article class="exp-card" data-reveal>
         <div class="exp-top">
           <div>
-            <h3 class="exp-role">Stagiaire en Conception Électrique (12 mois)</h3>
+            <h3 class="exp-role"><span lang="fr">Stagiaire en Conception Électrique (12 mois)</span><span lang="en">Electrical Design Intern (12 months)</span></h3>
             <p class="exp-company">Bombardier · Montréal, QC</p>
           </div>
-          <p class="exp-date">Sept 2024 — Août 2025</p>
+          <p class="exp-date"><span lang="fr">Sept 2024 — Août 2025</span><span lang="en">Sept 2024 — Aug 2025</span></p>
         </div>
         <ul class="exp-list">
-          <li>Conception et amélioration de l'architecture électrique du banc d'essai du programme GLOBAL pour plus de 1 000 paramètres via des schémas AutoCAD.</li>
-          <li>Développement de procédures de test pour l'arrêt d'urgence, la distribution de puissance, la mise à la terre, le PLC et les châssis informatiques.</li>
-          <li>Résolution de 50+ problèmes électriques, réseaux et logiciels — lecture/injection de signaux, validation de protocoles CANBUS, ARINC et RFM, et simulation.</li>
-          <li>Évaluation, commande et installation de cartes électroniques, configuration sous Linux Red Hat et Windows, et maintenance d'une base de données de 1 000+ connexions matérielles/logicielles.</li>
+          <li><span lang="fr">Conception et amélioration de l'architecture électrique du banc d'essai du programme GLOBAL pour plus de 1 000 paramètres via des schémas AutoCAD.</span><span lang="en">Designed and improved the electrical architecture of the GLOBAL program test bench, covering over 1,000 parameters, through AutoCAD schematics.</span></li>
+          <li><span lang="fr">Développement de procédures de test pour l'arrêt d'urgence, la distribution de puissance, la mise à la terre, le PLC et les châssis informatiques.</span><span lang="en">Developed test procedures for the emergency stop, power distribution, grounding, PLC and computing chassis.</span></li>
+          <li><span lang="fr">Résolution de 50+ problèmes électriques, réseaux et logiciels — lecture/injection de signaux, validation de protocoles CANBUS, ARINC et RFM, et simulation.</span><span lang="en">Resolved 50+ electrical, network and software issues — signal reading/injection, CAN bus, ARINC and RFM protocol validation, and simulation.</span></li>
+          <li><span lang="fr">Évaluation, commande et installation de cartes électroniques, configuration sous Linux Red Hat et Windows, et maintenance d'une base de données de 1 000+ connexions matérielles/logicielles.</span><span lang="en">Assessed, ordered and installed electronic cards, configured Linux Red Hat and Windows, and maintained a database of 1,000+ hardware/software connections.</span></li>
         </ul>
       </article>
     </div>
@@ -172,30 +205,32 @@
   <!-- ════════ ÉDUCATION ════════ -->
   <section class="section" id="education" aria-labelledby="titre-education">
     <div class="section-wrap">
-      <span class="section-label">Éducation</span>
-      <h2 id="titre-education">Baccalauréat en <em>génie électrique</em></h2>
+      <span class="section-label"><span lang="fr">Éducation</span><span lang="en">Education</span></span>
+      <h2 id="titre-education"><span lang="fr">Baccalauréat en <em>génie électrique</em></span><span lang="en">Bachelor's in <em>electrical engineering</em></span></h2>
       <p class="section-intro">
-        Programme coopératif à l'Université Concordia, combinant théorie avancée
-        et expérience industrielle.
+        <span lang="fr">Programme coopératif à l'Université Concordia, combinant théorie avancée
+        et expérience industrielle.</span>
+        <span lang="en">Co-op program at Concordia University, combining advanced theory with
+        industry experience.</span>
       </p>
 
       <article class="edu-card" data-reveal>
-        <h3 class="edu-degree">Baccalauréat en génie électrique — Co-op</h3>
-        <p class="edu-school">Université Concordia · Montréal, QC</p>
-        <p class="edu-date">2023 — Prévu Avril 2027</p>
+        <h3 class="edu-degree"><span lang="fr">Baccalauréat en génie électrique — Co-op</span><span lang="en">BEng in Electrical Engineering — Co-op</span></h3>
+        <p class="edu-school"><span lang="fr">Université Concordia</span><span lang="en">Concordia University</span> · Montréal, QC</p>
+        <p class="edu-date"><span lang="fr">2023 — Prévu Avril 2027</span><span lang="en">2023 — Expected April 2027</span></p>
 
         <div class="edu-courses">
-          <h4 class="edu-courses-title">Cours pertinents</h4>
+          <h4 class="edu-courses-title"><span lang="fr">Cours pertinents</span><span lang="en">Relevant coursework</span></h4>
           <ul class="edu-course-list">
-            <li><span class="edu-course-code">ELEC 372</span> Fondements des systèmes de commande</li>
-            <li><span class="edu-course-code">ELEC 312</span> Électronique II</li>
-            <li><span class="edu-course-code">ELEC 351</span> Ondes électromagnétiques et structures de guidage</li>
-            <li><span class="edu-course-code">ELEC 331</span> Génie de la puissance</li>
-            <li><span class="edu-course-code">ELEC 421</span> Dispositifs à semi-conducteurs</li>
-            <li><span class="edu-course-code">ELEC 439</span> Conception et commandes de systèmes pour véhicules électriques</li>
+            <li><span class="edu-course-code">ELEC 372</span> <span lang="fr">Fondements des systèmes de commande</span><span lang="en">Fundamentals of Control Systems</span></li>
+            <li><span class="edu-course-code">ELEC 312</span> <span lang="fr">Électronique II</span><span lang="en">Electronics II</span></li>
+            <li><span class="edu-course-code">ELEC 351</span> <span lang="fr">Ondes électromagnétiques et structures de guidage</span><span lang="en">Electromagnetic Waves and Guiding Structures</span></li>
+            <li><span class="edu-course-code">ELEC 331</span> <span lang="fr">Génie de la puissance</span><span lang="en">Fundamentals of Electrical Power Engineering</span></li>
+            <li><span class="edu-course-code">ELEC 421</span> <span lang="fr">Dispositifs à semi-conducteurs</span><span lang="en">Solid State Devices</span></li>
+            <li><span class="edu-course-code">ELEC 439</span> <span lang="fr">Conception et commandes de systèmes pour véhicules électriques</span><span lang="en">Design and Control of Electric Vehicle Systems</span></li>
             <li>
               <span class="edu-course-code">ELE8202</span>
-              Commande de procédés industriels
+              <span lang="fr">Commande de procédés industriels</span><span lang="en">Industrial Process Control</span>
               <span class="edu-course-note">Polytechnique Montréal</span>
             </li>
           </ul>
@@ -207,69 +242,71 @@
   <!-- ════════ PROJETS ════════ -->
   <section class="section section--dark section--grid" id="projects" aria-labelledby="titre-projets">
     <div class="section-wrap">
-      <span class="section-label">Projets</span>
-      <h2 id="titre-projets">Des projets concrets, du <em>terrain au code</em></h2>
+      <span class="section-label"><span lang="fr">Projets</span><span lang="en">Projects</span></span>
+      <h2 id="titre-projets"><span lang="fr">Des projets concrets, du <em>terrain au code</em></span><span lang="en">Hands-on projects, from <em>the field to the code</em></span></h2>
       <p class="section-intro">
-        Systèmes de puissance, cartes électroniques, automatisation industrielle et
-        semi-conducteurs — chaque projet a sa page, avec les détails techniques.
+        <span lang="fr">Systèmes de puissance, cartes électroniques, automatisation industrielle et
+        semi-conducteurs — chaque projet a sa page, avec les détails techniques.</span>
+        <span lang="en">Power systems, circuit boards, industrial automation and semiconductors —
+        each project has its own page with the technical details.</span>
       </p>
 
       <div class="projects-grid">
         <article class="proj-card proj-card--featured" data-reveal>
-          <h3 class="proj-name"><a href="projets/robot-inspection-conduites.html">Robot autonome d’inspection de conduites</a></h3>
-          <p class="proj-year">2026 — 2027 · Projet de fin d’études</p>
-          <p class="proj-desc">Architecture de puissance complète du robot, des composants jusqu’au brochage du contrôleur : rail principal de 24 V, bloc-batterie Li-ion 6S de 91 Wh avec BMS, deux convertisseurs 5 V et surveillance de l’état de charge et de santé de la batterie. Conçu, puis construit et câblé.</p>
-          <ul class="proj-tags"><li>Li-ion 6S</li><li>BMS</li><li>SOC / SOH</li><li>Architecture de puissance</li></ul>
-          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+          <h3 class="proj-name"><a href="projets/robot-inspection-conduites.html"><span lang="fr">Robot autonome d’inspection de conduites</span><span lang="en">Autonomous pipe inspection robot</span></a></h3>
+          <p class="proj-year"><span lang="fr">2026 — 2027 · Projet de fin d’études</span><span lang="en">2026 — 2027 · Capstone project</span></p>
+          <p class="proj-desc"><span lang="fr">Architecture de puissance complète du robot, des composants jusqu’au brochage du contrôleur : rail principal de 24 V, bloc-batterie Li-ion 6S de 91 Wh avec BMS, deux convertisseurs 5 V et surveillance de l’état de charge et de santé de la batterie. Conçu, puis construit et câblé.</span><span lang="en">Complete power architecture of the robot, from components down to the controller pinout: 24 V main rail, 91 Wh 6S Li-ion battery pack with BMS, two 5 V converters, and battery state-of-charge and state-of-health monitoring. Designed, then built and wired.</span></p>
+          <ul class="proj-tags"><li>Li-ion 6S</li><li>BMS</li><li>SOC / SOH</li><li><span lang="fr">Architecture de puissance</span><span lang="en">Power architecture</span></li></ul>
+          <p class="proj-more" aria-hidden="true"><span lang="fr">Voir le projet</span><span lang="en">View project</span> <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name"><a href="projets/aerotrail.html">Ordinateur de vélo AeroTrail</a></h3>
-          <p class="proj-year">2026 · ENGR 390 · 6 personnes</p>
-          <p class="proj-desc">Carte porteuse quatre couches conçue sous Altium Designer et livrée prête pour fabrication : front-end RF du récepteur GNSS à impédance contrôlée et chaîne d’alimentation sur cellule 18650 stable sur toute la décharge.</p>
-          <ul class="proj-tags"><li>Altium Designer</li><li>PCB 4 couches</li><li>RF / GNSS</li><li>Électronique de puissance</li></ul>
-          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+          <h3 class="proj-name"><a href="projets/aerotrail.html"><span lang="fr">Ordinateur de vélo AeroTrail</span><span lang="en">AeroTrail bike computer</span></a></h3>
+          <p class="proj-year"><span lang="fr">2026 · ENGR 390 · 6 personnes</span><span lang="en">2026 · ENGR 390 · 6 people</span></p>
+          <p class="proj-desc"><span lang="fr">Carte porteuse quatre couches conçue sous Altium Designer et livrée prête pour fabrication : front-end RF du récepteur GNSS à impédance contrôlée et chaîne d’alimentation sur cellule 18650 stable sur toute la décharge.</span><span lang="en">Four-layer carrier board designed in Altium Designer and delivered ready for fabrication: controlled-impedance RF front end for the GNSS receiver and an 18650 power chain that stays stable across the full discharge.</span></p>
+          <ul class="proj-tags"><li>Altium Designer</li><li><span lang="fr">PCB 4 couches</span><span lang="en">4-layer PCB</span></li><li>RF / GNSS</li><li><span lang="fr">Électronique de puissance</span><span lang="en">Power electronics</span></li></ul>
+          <p class="proj-more" aria-hidden="true"><span lang="fr">Voir le projet</span><span lang="en">View project</span> <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name"><a href="projets/palan-industriel.html">Automatisation d’un palan industriel</a></h3>
+          <h3 class="proj-name"><a href="projets/palan-industriel.html"><span lang="fr">Automatisation d’un palan industriel</span><span lang="en">Industrial hoist automation</span></a></h3>
           <p class="proj-year">2026 · ELE8202 · Polytechnique Montréal</p>
-          <p class="proj-desc">Automatisme séquentiel d’un palan à deux axes sur automate Modicon M340, en Grafcet et Ladder : quatre modes, positionnement en boucle fermée par encodeurs, arrêt d’urgence et IHM sur écran tactile Magelis.</p>
-          <ul class="proj-tags"><li>Modicon M340</li><li>Grafcet</li><li>Ladder</li><li>IHM Magelis</li></ul>
-          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+          <p class="proj-desc"><span lang="fr">Automatisme séquentiel d’un palan à deux axes sur automate Modicon M340, en Grafcet et Ladder : quatre modes, positionnement en boucle fermée par encodeurs, arrêt d’urgence et IHM sur écran tactile Magelis.</span><span lang="en">Sequential control of a two-axis hoist on a Modicon M340 PLC in Grafcet and Ladder: four operating modes, closed-loop positioning from encoders, emergency stop and a Magelis touchscreen HMI.</span></p>
+          <ul class="proj-tags"><li>Modicon M340</li><li>Grafcet</li><li>Ladder</li><li><span lang="fr">IHM Magelis</span><span lang="en">Magelis HMI</span></li></ul>
+          <p class="proj-more" aria-hidden="true"><span lang="fr">Voir le projet</span><span lang="en">View project</span> <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name"><a href="projets/telemetrie-course.html">Dispositif de télémétrie de course</a></h3>
+          <h3 class="proj-name"><a href="projets/telemetrie-course.html"><span lang="fr">Dispositif de télémétrie de course</span><span lang="en">Race telemetry device</span></a></h3>
           <p class="proj-year">2026</p>
-          <p class="proj-desc">Appareil de télémétrie véhiculaire en temps réel avec ESP32, GPS, IMU, écran OLED et enregistrement microSD. Algorithmes de filtrage pour la vitesse, les forces G, le 0-100 et le quart de mille.</p>
-          <ul class="proj-tags"><li>ESP32</li><li>C++</li><li>GPS</li><li>IMU</li><li>Embarqué</li></ul>
-          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+          <p class="proj-desc"><span lang="fr">Appareil de télémétrie véhiculaire en temps réel avec ESP32, GPS, IMU, écran OLED et enregistrement microSD. Algorithmes de filtrage pour la vitesse, les forces G, le 0-100 et le quart de mille.</span><span lang="en">Real-time vehicle telemetry device with an ESP32, GPS, IMU, OLED display and microSD logging. Filtering algorithms for speed, G-forces, 0-100 km/h and quarter-mile times.</span></p>
+          <ul class="proj-tags"><li>ESP32</li><li>C++</li><li>GPS</li><li>IMU</li><li><span lang="fr">Embarqué</span><span lang="en">Embedded</span></li></ul>
+          <p class="proj-more" aria-hidden="true"><span lang="fr">Voir le projet</span><span lang="en">View project</span> <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name"><a href="projets/diagnostic-automobile.html">Diagnostic &amp; réparation automobile</a></h3>
-          <p class="proj-year">2023 — 2026 · Personnel</p>
-          <p class="proj-desc">Plus de 15 000 $ de valeur ajoutée par des réparations électriques complexes. Diagnostic au scanner OBD-II et au multimètre, analyse des corrections de carburant, et réfection complète d’un moteur V6 3.8L et de sa transmission manuelle.</p>
-          <ul class="proj-tags"><li>OBD-II</li><li>Multimètre</li><li>Diagnostic moteur</li><li>Impression 3D</li></ul>
-          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+          <h3 class="proj-name"><a href="projets/diagnostic-automobile.html"><span lang="fr">Diagnostic &amp; réparation automobile</span><span lang="en">Automotive diagnostics &amp; repair</span></a></h3>
+          <p class="proj-year"><span lang="fr">2023 — 2026 · Personnel</span><span lang="en">2023 — 2026 · Personal</span></p>
+          <p class="proj-desc"><span lang="fr">Plus de 15 000 $ de valeur ajoutée par des réparations électriques complexes. Diagnostic au scanner OBD-II et au multimètre, analyse des corrections de carburant, et réfection complète d’un moteur V6 3.8L et de sa transmission manuelle.</span><span lang="en">Over $15,000 in value added through complex electrical repairs. Diagnostics with an OBD-II scanner and multimeter, fuel trim analysis, and a complete rebuild of a 3.8L V6 engine and its manual transmission.</span></p>
+          <ul class="proj-tags"><li>OBD-II</li><li><span lang="fr">Multimètre</span><span lang="en">Multimeter</span></li><li><span lang="fr">Diagnostic moteur</span><span lang="en">Engine diagnostics</span></li><li><span lang="fr">Impression 3D</span><span lang="en">3D printing</span></li></ul>
+          <p class="proj-more" aria-hidden="true"><span lang="fr">Voir le projet</span><span lang="en">View project</span> <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <h3 class="proj-name"><a href="projets/aeroglisseur-autonome.html">Aéroglisseur autonome</a></h3>
-          <p class="proj-year">2025 · ENGR 290 · 5 personnes</p>
-          <p class="proj-desc">Calculs de puissance électrique appuyant le choix des batteries, des ventilateurs et des capteurs, algorithme de navigation dans un labyrinthe, et évaluation de la portance, de la poussée et de la stabilité.</p>
-          <ul class="proj-tags"><li>Navigation</li><li>Batteries</li><li>Algorithmes</li><li>Aérodynamique</li></ul>
-          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+          <h3 class="proj-name"><a href="projets/aeroglisseur-autonome.html"><span lang="fr">Aéroglisseur autonome</span><span lang="en">Autonomous hovercraft</span></a></h3>
+          <p class="proj-year"><span lang="fr">2025 · ENGR 290 · 5 personnes</span><span lang="en">2025 · ENGR 290 · 5 people</span></p>
+          <p class="proj-desc"><span lang="fr">Calculs de puissance électrique appuyant le choix des batteries, des ventilateurs et des capteurs, algorithme de navigation dans un labyrinthe, et évaluation de la portance, de la poussée et de la stabilité.</span><span lang="en">Electrical power calculations behind the choice of batteries, fans and sensors, a maze navigation algorithm, and lift, thrust and stability analysis.</span></p>
+          <ul class="proj-tags"><li>Navigation</li><li>Batteries</li><li><span lang="fr">Algorithmes</span><span lang="en">Algorithms</span></li><li><span lang="fr">Aérodynamique</span><span lang="en">Aerodynamics</span></li></ul>
+          <p class="proj-more" aria-hidden="true"><span lang="fr">Voir le projet</span><span lang="en">View project</span> <span>→</span></p>
         </article>
 
         <article class="proj-card" data-reveal>
-          <p class="proj-status">En cours</p>
-          <h3 class="proj-name"><a href="projets/cristal-silicium.html">Croissance d’un cristal de silicium</a></h3>
+          <p class="proj-status"><span lang="fr">En cours</span><span lang="en">In progress</span></p>
+          <h3 class="proj-name"><a href="projets/cristal-silicium.html"><span lang="fr">Croissance d’un cristal de silicium</span><span lang="en">Silicon crystal growth</span></a></h3>
           <p class="proj-year">2026 · ELEC 421</p>
-          <p class="proj-desc">Croissance d’un cristal de silicium en laboratoire, dans le cadre du cours de dispositifs à semi-conducteurs. Méthode et résultats à venir.</p>
-          <ul class="proj-tags"><li>Semi-conducteurs</li><li>Silicium</li><li>Laboratoire</li></ul>
-          <p class="proj-more" aria-hidden="true">Voir le projet <span>→</span></p>
+          <p class="proj-desc"><span lang="fr">Croissance d’un cristal de silicium en laboratoire, dans le cadre du cours de dispositifs à semi-conducteurs. Méthode et résultats à venir.</span><span lang="en">Growing a silicon crystal in the lab as part of the semiconductor devices course. Method and results to come.</span></p>
+          <ul class="proj-tags"><li><span lang="fr">Semi-conducteurs</span><span lang="en">Semiconductors</span></li><li><span lang="fr">Silicium</span><span lang="en">Silicon</span></li><li><span lang="fr">Laboratoire</span><span lang="en">Lab work</span></li></ul>
+          <p class="proj-more" aria-hidden="true"><span lang="fr">Voir le projet</span><span lang="en">View project</span> <span>→</span></p>
         </article>
       </div>
     </div>
@@ -278,56 +315,72 @@
   <!-- ════════ COMPÉTENCES ════════ -->
   <section class="section section--muted" id="skills" aria-labelledby="titre-competences">
     <div class="section-wrap">
-      <span class="section-label">Compétences</span>
-      <h2 id="titre-competences">Puissance, conception et <em>automatisation</em></h2>
+      <span class="section-label"><span lang="fr">Compétences</span><span lang="en">Skills</span></span>
+      <h2 id="titre-competences"><span lang="fr">Puissance, conception et <em>automatisation</em></span><span lang="en">Power, design and <em>automation</em></span></h2>
 
       <div class="skills-grid">
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Énergie &amp; puissance</h3>
+          <h3 class="skill-cat"><span lang="fr">Énergie &amp; puissance</span><span lang="en">Energy &amp; power</span></h3>
           <ul class="skill-pills">
-            <li>Architecture de puissance</li><li>Batteries Li-ion &amp; BMS (SOC, SOH)</li><li>Distribution de puissance</li><li>Mise à la terre</li><li>Conversion CC-CC</li><li>Électronique de puissance</li>
+            <li><span lang="fr">Architecture de puissance</span><span lang="en">Power architecture</span></li>
+            <li><span lang="fr">Batteries Li-ion &amp; BMS (SOC, SOH)</span><span lang="en">Li-ion batteries &amp; BMS (SOC, SOH)</span></li>
+            <li><span lang="fr">Distribution de puissance</span><span lang="en">Power distribution</span></li>
+            <li><span lang="fr">Mise à la terre</span><span lang="en">Grounding</span></li>
+            <li><span lang="fr">Conversion CC-CC</span><span lang="en">DC-DC conversion</span></li>
+            <li><span lang="fr">Électronique de puissance</span><span lang="en">Power electronics</span></li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Conception électronique</h3>
+          <h3 class="skill-cat"><span lang="fr">Conception électronique</span><span lang="en">Electronic design</span></h3>
           <ul class="skill-pills">
-            <li>AutoCAD Electrical</li><li>Altium Designer</li><li>PCB multicouche</li><li>Impédance contrôlée / RF</li><li>Dispositifs à semi-conducteurs</li>
+            <li>AutoCAD Electrical</li><li>Altium Designer</li>
+            <li><span lang="fr">PCB multicouche</span><span lang="en">Multilayer PCB</span></li>
+            <li><span lang="fr">Impédance contrôlée / RF</span><span lang="en">Controlled impedance / RF</span></li>
+            <li><span lang="fr">Dispositifs à semi-conducteurs</span><span lang="en">Semiconductor devices</span></li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Automatisation &amp; commande</h3>
+          <h3 class="skill-cat"><span lang="fr">Automatisation &amp; commande</span><span lang="en">Automation &amp; control</span></h3>
           <ul class="skill-pills">
-            <li>Automates Schneider Modicon M340 (Control Expert)</li><li>Ladder (LD)</li><li>Grafcet (SFC)</li><li>IHM Magelis</li><li>Encodeurs</li>
+            <li><span lang="fr">Automates Schneider Modicon M340 (Control Expert)</span><span lang="en">Schneider Modicon M340 PLCs (Control Expert)</span></li>
+            <li>Ladder (LD)</li><li>Grafcet (SFC)</li>
+            <li><span lang="fr">IHM Magelis</span><span lang="en">Magelis HMI</span></li>
+            <li><span lang="fr">Encodeurs</span><span lang="en">Encoders</span></li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
           <h3 class="skill-cat">Instrumentation &amp; test</h3>
           <ul class="skill-pills">
-            <li>Oscilloscope</li><li>Multimètre</li><li>Alimentation de laboratoire</li><li>Lecture / injection de signaux</li><li>Soudure</li>
+            <li>Oscilloscope</li>
+            <li><span lang="fr">Multimètre</span><span lang="en">Multimeter</span></li>
+            <li><span lang="fr">Alimentation de laboratoire</span><span lang="en">Bench power supply</span></li>
+            <li><span lang="fr">Lecture / injection de signaux</span><span lang="en">Signal reading / injection</span></li>
+            <li><span lang="fr">Soudure</span><span lang="en">Soldering</span></li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Simulation &amp; analyse</h3>
+          <h3 class="skill-cat"><span lang="fr">Simulation &amp; analyse</span><span lang="en">Simulation &amp; analysis</span></h3>
           <ul class="skill-pills">
             <li>MATLAB</li><li>Simulink</li><li>LTspice</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Protocoles &amp; interfaces</h3>
+          <h3 class="skill-cat"><span lang="fr">Protocoles &amp; interfaces</span><span lang="en">Protocols &amp; interfaces</span></h3>
           <ul class="skill-pills">
             <li>CAN bus</li><li>ARINC 429</li><li>I²C</li><li>SPI</li><li>UART</li><li>BLE / GATT</li><li>OBD-II</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Programmation &amp; outils</h3>
+          <h3 class="skill-cat"><span lang="fr">Programmation &amp; outils</span><span lang="en">Programming &amp; tools</span></h3>
           <ul class="skill-pills">
             <li>Python</li><li>C++</li><li>C</li><li>Java</li><li>Kotlin</li><li>Git</li><li>Excel</li><li>Fusion 360</li><li>Tinkercad</li>
           </ul>
         </div>
         <div class="skill-group" data-reveal>
-          <h3 class="skill-cat">Langues</h3>
+          <h3 class="skill-cat"><span lang="fr">Langues</span><span lang="en">Languages</span></h3>
           <ul class="skill-pills">
-            <li>Français (courant)</li><li>Anglais (courant)</li>
+            <li><span lang="fr">Français (courant)</span><span lang="en">French (fluent)</span></li>
+            <li><span lang="fr">Anglais (courant)</span><span lang="en">English (fluent)</span></li>
           </ul>
         </div>
       </div>
@@ -338,9 +391,10 @@
   <section class="section section--dark section--grid" id="contact" aria-labelledby="titre-contact">
     <div class="section-wrap">
       <span class="section-label">Contact</span>
-      <h2 id="titre-contact">Travaillons <em>ensemble</em></h2>
+      <h2 id="titre-contact"><span lang="fr">Travaillons <em>ensemble</em></span><span lang="en">Let’s work <em>together</em></span></h2>
       <p class="section-intro">
-        Disponible à temps plein en génie électrique dès mai 2027.
+        <span lang="fr">Disponible à temps plein en génie électrique dès mai 2027.</span>
+        <span lang="en">Available full-time in electrical engineering from May 2027.</span>
       </p>
 
       <ul class="contact-row">
@@ -372,7 +426,7 @@
             </svg>
           </span>
           <a href="https://www.linkedin.com/in/pierre-olivier-marquis/" target="_blank" rel="noopener">
-            LinkedIn<span class="visually-hidden"> (nouvel onglet)</span>
+            LinkedIn<span class="visually-hidden"> <span lang="fr">(nouvel onglet)</span><span lang="en">(new tab)</span></span>
           </a>
         </li>
       </ul>
@@ -388,7 +442,7 @@
       <span class="footer-logo-mark" aria-hidden="true">PM</span>
       <span class="footer-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
-    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · Tous droits réservés</p>
+    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></p>
   </div>
 </footer>
 

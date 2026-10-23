@@ -68,6 +68,45 @@
   color: var(--navy);
 }
 
+/* Groupe de droite : navigation, choix de langue et hamburger. */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* ── Sélecteur de langue FR | EN ──
+   Masqué sans JavaScript, puisqu'il ne peut alors rien faire. */
+.lang-switch {
+  display: flex;
+  border: 1px solid rgba(184, 146, 46, 0.45);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+}
+
+html:not(.js) .lang-switch {
+  display: none;
+}
+
+.lang-switch button {
+  padding: 0.3rem 0.6rem;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease);
+}
+
+.lang-switch button:hover {
+  color: var(--gold-light);
+}
+
+.lang-switch button[aria-pressed="true"] {
+  background: var(--gold);
+  color: var(--navy);
+}
+
 /* ── Liens (bureau) ── */
 .nav-links {
   display: flex;
@@ -179,7 +218,9 @@
   overflow: hidden;
 }
 
-@media (max-width: 900px) {
+/* 1080px et non 900px : avec le sélecteur FR | EN, le menu complet ne tient
+   plus sur une ligne en dessous (doit rester aligné sur navigation.js). */
+@media (max-width: 1080px) {
   .nav-links {
     display: none;
   }
@@ -190,6 +231,33 @@
 
   .nav-logo {
     font-size: 1.1rem;
+  }
+}
+
+/* Petits téléphones : logo, sélecteur de langue et hamburger doivent tenir
+   sur une ligne sans pousser le menu hors de l'écran. */
+@media (max-width: 600px) {
+  .nav-right {
+    gap: var(--space-sm);
+  }
+
+  .lang-switch button {
+    padding: 0.3rem 0.45rem;
+  }
+}
+
+@media (max-width: 370px) {
+  .nav-logo {
+    gap: 8px;
+    font-size: 1rem;
+  }
+}
+
+/* Écrans très étroits (iPhone SE 1re génération) : le monogramme suffit, le
+   nom est déjà en grand dans la page. */
+@media (max-width: 359px) {
+  .nav-logo-text {
+    display: none;
   }
 }
 

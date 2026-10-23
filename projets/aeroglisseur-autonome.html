@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"
+      data-title-fr="Aéroglisseur autonome | Pierre-Olivier Marquis"
+      data-title-en="Autonomous hovercraft | Pierre-Olivier Marquis">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +12,13 @@
   <meta name="theme-color" content="#0d1f3c">
 
   <link rel="canonical" href="https://pierreoliviermarquis.com/projets/aeroglisseur-autonome.html">
+  <link rel="alternate" hreflang="fr" href="https://pierreoliviermarquis.com/projets/aeroglisseur-autonome.html?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://pierreoliviermarquis.com/projets/aeroglisseur-autonome.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://pierreoliviermarquis.com/projets/aeroglisseur-autonome.html">
 
   <meta property="og:type" content="article">
   <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
   <meta property="og:site_name" content="Pierre-Olivier Marquis">
   <meta property="og:url" content="https://pierreoliviermarquis.com/projets/aeroglisseur-autonome.html">
   <meta property="og:title" content="Aéroglisseur autonome | Pierre-Olivier Marquis">
@@ -28,6 +34,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Langue et « JS actif » avant le premier rendu (voir index.html). -->
+  <script>
+    (function (r) {
+      var l = null;
+      try { l = localStorage.getItem("lang"); } catch (e) {}
+      var q = /[?&]lang=(fr|en)\b/.exec(location.search);
+      if (q) l = q[1];
+      if (l !== "fr" && l !== "en") l = /^fr\b/i.test(navigator.language || "") ? "fr" : "en";
+      r.lang = l;
+      r.setAttribute("data-lang", l);
+      r.classList.add("js");
+    })(document.documentElement);
+  </script>
+
   <!-- Même ordre que l'accueil, plus la feuille propre aux pages de projet. -->
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
@@ -37,12 +57,12 @@
 
   <script src="../js/navigation.js" defer></script>
   <script src="../js/main.js" defer></script>
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="../js/i18n.js" defer></script>
 </head>
 
 <body>
 
-<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+<a class="skip-link" href="#contenu"><span lang="fr">Aller au contenu principal</span><span lang="en">Skip to main content</span></a>
 
 <!-- ════════ EN-TÊTE ════════ -->
 <header class="site-header" data-header>
@@ -52,30 +72,37 @@
       <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
 
-    <nav aria-label="Navigation principale">
-      <ul class="nav-links">
-        <li><a href="../index.html#experience">Expérience</a></li>
-        <li><a href="../index.html#education">Éducation</a></li>
-        <li><a href="../index.html#projects" class="is-active" aria-current="page">Projets</a></li>
-        <li><a href="../index.html#skills">Compétences</a></li>
-        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-right">
+      <nav data-aria-fr="Navigation principale" data-aria-en="Main navigation" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a></li>
+          <li><a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a></li>
+          <li><a href="../index.html#projects" class="is-active" aria-current="page"><span lang="fr">Projets</span><span lang="en">Projects</span></a></li>
+          <li><a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a></li>
+          <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
 
-    <button class="nav-toggle" type="button" data-nav-toggle
-            aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
+      <div class="lang-switch" role="group" data-aria-fr="Langue" data-aria-en="Language" aria-label="Langue">
+        <button type="button" data-set-lang="fr" aria-pressed="true" title="Français">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden aria-label="Navigation mobile">
-  <a href="../index.html#experience">Expérience</a>
-  <a href="../index.html#education">Éducation</a>
-  <a href="../index.html#projects">Projets</a>
-  <a href="../index.html#skills">Compétences</a>
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden data-aria-fr="Navigation mobile" data-aria-en="Mobile navigation" aria-label="Navigation mobile">
+  <a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a>
+  <a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a>
+  <a href="../index.html#projects"><span lang="fr">Projets</span><span lang="en">Projects</span></a>
+  <a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a>
   <a href="../index.html#contact" class="cta">Contact</a>
 </nav>
 
@@ -84,12 +111,12 @@
   <!-- ════════ EN-TÊTE DU PROJET ════════ -->
   <section class="section--dark section--grid proj-hero" aria-labelledby="titre-projet">
     <div class="section-wrap">
-      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
+      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> <span lang="fr">Tous les projets</span><span lang="en">All projects</span></a>
       <span class="section-label">ENGR 290</span>
-      <h1 id="titre-projet">Aéroglisseur <em>autonome</em></h1>
-      <ul class="proj-meta"><li>2025</li><li>ENGR 290</li><li>Équipe de 5</li></ul>
-      <p class="proj-lede">Aéroglisseur autonome conçu en équipe pour traverser un labyrinthe : puissance électrique, navigation et calculs de performance.</p>
-      <ul class="proj-tags"><li>Navigation</li><li>Batteries</li><li>Algorithmes</li><li>Aérodynamique</li></ul>
+      <h1 id="titre-projet"><span lang="fr">Aéroglisseur <em>autonome</em></span><span lang="en"><em>Autonomous</em> hovercraft</span></h1>
+      <ul class="proj-meta"><li>2025</li><li>ENGR 290</li><li><span lang="fr">Équipe de 5</span><span lang="en">Team of 5</span></li></ul>
+      <p class="proj-lede"><span lang="fr">Aéroglisseur autonome conçu en équipe pour traverser un labyrinthe : puissance électrique, navigation et calculs de performance.</span><span lang="en">An autonomous hovercraft designed as a team to get through a maze: electrical power, navigation and performance calculations.</span></p>
+      <ul class="proj-tags"><li>Navigation</li><li>Batteries</li><li><span lang="fr">Algorithmes</span><span lang="en">Algorithms</span></li><li><span lang="fr">Aérodynamique</span><span lang="en">Aerodynamics</span></li></ul>
     </div>
   </section>
 
@@ -98,16 +125,16 @@
     <div class="section-wrap proj-body">
       <div>
         <section class="proj-section" aria-labelledby="titre-apercu">
-          <h2 class="proj-h2" id="titre-apercu">Aperçu</h2>
-          <p>Projet de conception en équipe de cinq dans le cadre du cours ENGR 290 : construire un aéroglisseur capable de se diriger seul dans un labyrinthe.</p>
+          <h2 class="proj-h2" id="titre-apercu"><span lang="fr">Aperçu</span><span lang="en">Overview</span></h2>
+          <p><span lang="fr">Projet de conception en équipe de cinq dans le cadre du cours ENGR 290 : construire un aéroglisseur capable de se diriger seul dans un labyrinthe.</span><span lang="en">A design project for a team of five in the ENGR 290 course: build a hovercraft that can find its own way through a maze.</span></p>
         </section>
 
         <section class="proj-section" aria-labelledby="titre-realisations">
-          <h2 class="proj-h2" id="titre-realisations">Ce que j’ai réalisé</h2>
+          <h2 class="proj-h2" id="titre-realisations"><span lang="fr">Ce que j’ai réalisé</span><span lang="en">What I did</span></h2>
           <ul class="exp-list">
-            <li>Déterminé les besoins en puissance électrique pour appuyer le choix des batteries, des ventilateurs et des capteurs.</li>
-            <li>Sélectionné l’algorithme de navigation dans le labyrinthe et programmé une partie du logiciel de navigation.</li>
-            <li>Effectué les calculs pour évaluer la portance, la poussée, la stabilité et la performance globale de l’aéroglisseur.</li>
+            <li><span lang="fr">Déterminé les besoins en puissance électrique pour appuyer le choix des batteries, des ventilateurs et des capteurs.</span><span lang="en">Determined the electrical power requirements to support the choice of batteries, fans and sensors.</span></li>
+            <li><span lang="fr">Sélectionné l’algorithme de navigation dans le labyrinthe et programmé une partie du logiciel de navigation.</span><span lang="en">Selected the maze navigation algorithm and programmed part of the navigation software.</span></li>
+            <li><span lang="fr">Effectué les calculs pour évaluer la portance, la poussée, la stabilité et la performance globale de l’aéroglisseur.</span><span lang="en">Performed the calculations for lift, thrust, stability and overall hovercraft performance.</span></li>
           </ul>
         </section>
 
@@ -116,26 +143,26 @@
              alt="…" loading="lazy"> et une <figcaption>. -->
       </div>
 
-      <aside class="proj-aside" aria-label="Fiche technique">
+      <aside class="proj-aside" data-aria-fr="Fiche technique" data-aria-en="Technical summary" aria-label="Fiche technique">
         <div class="proj-panel">
           <h2 class="proj-panel-title">Technologies</h2>
-          <ul class="skill-pills"><li>Bilan de puissance</li><li>Batteries</li><li>Capteurs</li><li>Algorithme de navigation</li></ul>
+          <ul class="skill-pills"><li><span lang="fr">Bilan de puissance</span><span lang="en">Power budget</span></li><li>Batteries</li><li><span lang="fr">Capteurs</span><span lang="en">Sensors</span></li><li><span lang="fr">Algorithme de navigation</span><span lang="en">Navigation algorithm</span></li></ul>
         </div>
       </aside>
     </div>
   </section>
 
   <!-- ════════ AUTRES PROJETS ════════ -->
-  <section class="section section--muted section--pager" aria-label="Autres projets">
+  <section class="section section--muted section--pager" data-aria-fr="Autres projets" data-aria-en="Other projects" aria-label="Autres projets">
     <div class="section-wrap">
-      <nav class="proj-pager" aria-label="Projet précédent et suivant">
+      <nav class="proj-pager" data-aria-fr="Projet précédent et suivant" data-aria-en="Previous and next project" aria-label="Projet précédent et suivant">
         <a href="diagnostic-automobile.html" rel="prev">
-          <span class="proj-pager-dir">← Projet précédent</span>
-          <span class="proj-pager-name">Diagnostic et réparation automobile</span>
+          <span class="proj-pager-dir"><span lang="fr">← Projet précédent</span><span lang="en">← Previous project</span></span>
+          <span class="proj-pager-name"><span lang="fr">Diagnostic et réparation automobile</span><span lang="en">Automotive diagnostics and repair</span></span>
         </a>
         <a class="proj-pager-next" href="cristal-silicium.html" rel="next">
-          <span class="proj-pager-dir">Projet suivant →</span>
-          <span class="proj-pager-name">Croissance d’un cristal de silicium</span>
+          <span class="proj-pager-dir"><span lang="fr">Projet suivant →</span><span lang="en">Next project →</span></span>
+          <span class="proj-pager-name"><span lang="fr">Croissance d’un cristal de silicium</span><span lang="en">Silicon crystal growth</span></span>
         </a>
       </nav>
     </div>
@@ -150,7 +177,7 @@
       <span class="footer-logo-mark" aria-hidden="true">PM</span>
       <span class="footer-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
-    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · Tous droits réservés</p>
+    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></p>
   </div>
 </footer>
 

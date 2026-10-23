@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  var DESKTOP_BREAKPOINT = 900; // doit rester aligné sur layout.css
+  var DESKTOP_BREAKPOINT = 1080; // doit rester aligné sur layout.css
 
   var header = document.querySelector("[data-header]");
   var toggle = document.querySelector("[data-nav-toggle]");
@@ -15,13 +15,27 @@
 
   /* ── Menu mobile ───────────────────────────────────────── */
 
+  // Libellé du bouton dans la langue active (voir i18n.js).
+  function updateToggleLabel() {
+    if (!toggle || !menu) return;
+    var en = document.documentElement.lang === "en";
+    var open = !menu.hidden;
+    toggle.setAttribute(
+      "aria-label",
+      open ? (en ? "Close menu" : "Fermer le menu") : (en ? "Open menu" : "Ouvrir le menu")
+    );
+  }
+
   function setMenu(open) {
     if (!toggle || !menu) return;
     menu.hidden = !open;
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+    updateToggleLabel();
     document.body.classList.toggle("has-menu-open", open);
   }
+
+  document.addEventListener("langchange", updateToggleLabel);
+  updateToggleLabel();
 
   function closeMenu() {
     setMenu(false);

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"
+      data-title-fr="Croissance d’un cristal de silicium | Pierre-Olivier Marquis"
+      data-title-en="Silicon crystal growth | Pierre-Olivier Marquis">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +12,13 @@
   <meta name="theme-color" content="#0d1f3c">
 
   <link rel="canonical" href="https://pierreoliviermarquis.com/projets/cristal-silicium.html">
+  <link rel="alternate" hreflang="fr" href="https://pierreoliviermarquis.com/projets/cristal-silicium.html?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://pierreoliviermarquis.com/projets/cristal-silicium.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://pierreoliviermarquis.com/projets/cristal-silicium.html">
 
   <meta property="og:type" content="article">
   <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
   <meta property="og:site_name" content="Pierre-Olivier Marquis">
   <meta property="og:url" content="https://pierreoliviermarquis.com/projets/cristal-silicium.html">
   <meta property="og:title" content="Croissance d’un cristal de silicium | Pierre-Olivier Marquis">
@@ -28,6 +34,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Langue et « JS actif » avant le premier rendu (voir index.html). -->
+  <script>
+    (function (r) {
+      var l = null;
+      try { l = localStorage.getItem("lang"); } catch (e) {}
+      var q = /[?&]lang=(fr|en)\b/.exec(location.search);
+      if (q) l = q[1];
+      if (l !== "fr" && l !== "en") l = /^fr\b/i.test(navigator.language || "") ? "fr" : "en";
+      r.lang = l;
+      r.setAttribute("data-lang", l);
+      r.classList.add("js");
+    })(document.documentElement);
+  </script>
+
   <!-- Même ordre que l'accueil, plus la feuille propre aux pages de projet. -->
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
@@ -37,12 +57,12 @@
 
   <script src="../js/navigation.js" defer></script>
   <script src="../js/main.js" defer></script>
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="../js/i18n.js" defer></script>
 </head>
 
 <body>
 
-<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+<a class="skip-link" href="#contenu"><span lang="fr">Aller au contenu principal</span><span lang="en">Skip to main content</span></a>
 
 <!-- ════════ EN-TÊTE ════════ -->
 <header class="site-header" data-header>
@@ -52,30 +72,37 @@
       <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
 
-    <nav aria-label="Navigation principale">
-      <ul class="nav-links">
-        <li><a href="../index.html#experience">Expérience</a></li>
-        <li><a href="../index.html#education">Éducation</a></li>
-        <li><a href="../index.html#projects" class="is-active" aria-current="page">Projets</a></li>
-        <li><a href="../index.html#skills">Compétences</a></li>
-        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-right">
+      <nav data-aria-fr="Navigation principale" data-aria-en="Main navigation" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a></li>
+          <li><a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a></li>
+          <li><a href="../index.html#projects" class="is-active" aria-current="page"><span lang="fr">Projets</span><span lang="en">Projects</span></a></li>
+          <li><a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a></li>
+          <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
 
-    <button class="nav-toggle" type="button" data-nav-toggle
-            aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
+      <div class="lang-switch" role="group" data-aria-fr="Langue" data-aria-en="Language" aria-label="Langue">
+        <button type="button" data-set-lang="fr" aria-pressed="true" title="Français">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden aria-label="Navigation mobile">
-  <a href="../index.html#experience">Expérience</a>
-  <a href="../index.html#education">Éducation</a>
-  <a href="../index.html#projects">Projets</a>
-  <a href="../index.html#skills">Compétences</a>
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden data-aria-fr="Navigation mobile" data-aria-en="Mobile navigation" aria-label="Navigation mobile">
+  <a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a>
+  <a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a>
+  <a href="../index.html#projects"><span lang="fr">Projets</span><span lang="en">Projects</span></a>
+  <a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a>
   <a href="../index.html#contact" class="cta">Contact</a>
 </nav>
 
@@ -84,12 +111,12 @@
   <!-- ════════ EN-TÊTE DU PROJET ════════ -->
   <section class="section--dark section--grid proj-hero" aria-labelledby="titre-projet">
     <div class="section-wrap">
-      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
+      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> <span lang="fr">Tous les projets</span><span lang="en">All projects</span></a>
       <span class="section-label">ELEC 421</span>
-      <h1 id="titre-projet">Croissance d’un <em>cristal de silicium</em></h1>
-      <ul class="proj-meta"><li>2026</li><li>ELEC 421 · Dispositifs à semi-conducteurs</li><li>En cours</li></ul>
-      <p class="proj-lede">Croissance d’un cristal de silicium en laboratoire, dans le cadre du cours de dispositifs à semi-conducteurs.</p>
-      <ul class="proj-tags"><li>Semi-conducteurs</li><li>Silicium</li><li>Laboratoire</li></ul>
+      <h1 id="titre-projet"><span lang="fr">Croissance d’un <em>cristal de silicium</em></span><span lang="en"><em>Silicon crystal</em> growth</span></h1>
+      <ul class="proj-meta"><li>2026</li><li><span lang="fr">ELEC 421 · Dispositifs à semi-conducteurs</span><span lang="en">ELEC 421 · Solid State Devices</span></li><li><span lang="fr">En cours</span><span lang="en">In progress</span></li></ul>
+      <p class="proj-lede"><span lang="fr">Croissance d’un cristal de silicium en laboratoire, dans le cadre du cours de dispositifs à semi-conducteurs.</span><span lang="en">Growing a silicon crystal in the lab as part of the semiconductor devices course.</span></p>
+      <ul class="proj-tags"><li><span lang="fr">Semi-conducteurs</span><span lang="en">Semiconductors</span></li><li><span lang="fr">Silicium</span><span lang="en">Silicon</span></li><li><span lang="fr">Laboratoire</span><span lang="en">Lab work</span></li></ul>
     </div>
   </section>
 
@@ -97,11 +124,11 @@
   <section class="section">
     <div class="section-wrap proj-body">
       <div>
-        <p class="proj-notice">Projet en cours : cette page sera complétée avec la méthode, les étapes et les résultats une fois le laboratoire terminé.</p>
+        <p class="proj-notice"><span lang="fr">Projet en cours : cette page sera complétée avec la méthode, les étapes et les résultats une fois le laboratoire terminé.</span><span lang="en">Project in progress: this page will be completed with the method, steps and results once the lab is done.</span></p>
 
         <section class="proj-section" aria-labelledby="titre-apercu">
-          <h2 class="proj-h2" id="titre-apercu">Aperçu</h2>
-          <p>Dans le cours ELEC 421 Dispositifs à semi-conducteurs, je réalise la croissance d’un cristal de silicium en laboratoire.</p>
+          <h2 class="proj-h2" id="titre-apercu"><span lang="fr">Aperçu</span><span lang="en">Overview</span></h2>
+          <p><span lang="fr">Dans le cours ELEC 421 Dispositifs à semi-conducteurs, je réalise la croissance d’un cristal de silicium en laboratoire.</span><span lang="en">In the ELEC 421 Solid State Devices course, I am growing a silicon crystal in the lab.</span></p>
         </section>
 
         <!-- Pour ajouter des photos : déposer les images dans img/projets/
@@ -109,26 +136,26 @@
              alt="…" loading="lazy"> et une <figcaption>. -->
       </div>
 
-      <aside class="proj-aside" aria-label="Fiche technique">
+      <aside class="proj-aside" data-aria-fr="Fiche technique" data-aria-en="Technical summary" aria-label="Fiche technique">
         <div class="proj-panel">
           <h2 class="proj-panel-title">Technologies</h2>
-          <ul class="skill-pills"><li>Physique des semi-conducteurs</li><li>Silicium cristallin</li></ul>
+          <ul class="skill-pills"><li><span lang="fr">Physique des semi-conducteurs</span><span lang="en">Semiconductor physics</span></li><li><span lang="fr">Silicium cristallin</span><span lang="en">Crystalline silicon</span></li></ul>
         </div>
       </aside>
     </div>
   </section>
 
   <!-- ════════ AUTRES PROJETS ════════ -->
-  <section class="section section--muted section--pager" aria-label="Autres projets">
+  <section class="section section--muted section--pager" data-aria-fr="Autres projets" data-aria-en="Other projects" aria-label="Autres projets">
     <div class="section-wrap">
-      <nav class="proj-pager" aria-label="Projet précédent et suivant">
+      <nav class="proj-pager" data-aria-fr="Projet précédent et suivant" data-aria-en="Previous and next project" aria-label="Projet précédent et suivant">
         <a href="aeroglisseur-autonome.html" rel="prev">
-          <span class="proj-pager-dir">← Projet précédent</span>
-          <span class="proj-pager-name">Aéroglisseur autonome</span>
+          <span class="proj-pager-dir"><span lang="fr">← Projet précédent</span><span lang="en">← Previous project</span></span>
+          <span class="proj-pager-name"><span lang="fr">Aéroglisseur autonome</span><span lang="en">Autonomous hovercraft</span></span>
         </a>
         <a class="proj-pager-next" href="robot-inspection-conduites.html" rel="next">
-          <span class="proj-pager-dir">Projet suivant →</span>
-          <span class="proj-pager-name">Robot autonome d’inspection de conduites</span>
+          <span class="proj-pager-dir"><span lang="fr">Projet suivant →</span><span lang="en">Next project →</span></span>
+          <span class="proj-pager-name"><span lang="fr">Robot autonome d’inspection de conduites</span><span lang="en">Autonomous pipe inspection robot</span></span>
         </a>
       </nav>
     </div>
@@ -143,7 +170,7 @@
       <span class="footer-logo-mark" aria-hidden="true">PM</span>
       <span class="footer-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
-    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · Tous droits réservés</p>
+    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></p>
   </div>
 </footer>
 

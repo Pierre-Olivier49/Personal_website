@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"
+      data-title-fr="Automatisation d’un palan industriel | Pierre-Olivier Marquis"
+      data-title-en="Industrial hoist automation | Pierre-Olivier Marquis">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +12,13 @@
   <meta name="theme-color" content="#0d1f3c">
 
   <link rel="canonical" href="https://pierreoliviermarquis.com/projets/palan-industriel.html">
+  <link rel="alternate" hreflang="fr" href="https://pierreoliviermarquis.com/projets/palan-industriel.html?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://pierreoliviermarquis.com/projets/palan-industriel.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://pierreoliviermarquis.com/projets/palan-industriel.html">
 
   <meta property="og:type" content="article">
   <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
   <meta property="og:site_name" content="Pierre-Olivier Marquis">
   <meta property="og:url" content="https://pierreoliviermarquis.com/projets/palan-industriel.html">
   <meta property="og:title" content="Automatisation d’un palan industriel | Pierre-Olivier Marquis">
@@ -28,6 +34,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Langue et « JS actif » avant le premier rendu (voir index.html). -->
+  <script>
+    (function (r) {
+      var l = null;
+      try { l = localStorage.getItem("lang"); } catch (e) {}
+      var q = /[?&]lang=(fr|en)\b/.exec(location.search);
+      if (q) l = q[1];
+      if (l !== "fr" && l !== "en") l = /^fr\b/i.test(navigator.language || "") ? "fr" : "en";
+      r.lang = l;
+      r.setAttribute("data-lang", l);
+      r.classList.add("js");
+    })(document.documentElement);
+  </script>
+
   <!-- Même ordre que l'accueil, plus la feuille propre aux pages de projet. -->
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
@@ -37,12 +57,12 @@
 
   <script src="../js/navigation.js" defer></script>
   <script src="../js/main.js" defer></script>
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="../js/i18n.js" defer></script>
 </head>
 
 <body>
 
-<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+<a class="skip-link" href="#contenu"><span lang="fr">Aller au contenu principal</span><span lang="en">Skip to main content</span></a>
 
 <!-- ════════ EN-TÊTE ════════ -->
 <header class="site-header" data-header>
@@ -52,30 +72,37 @@
       <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
 
-    <nav aria-label="Navigation principale">
-      <ul class="nav-links">
-        <li><a href="../index.html#experience">Expérience</a></li>
-        <li><a href="../index.html#education">Éducation</a></li>
-        <li><a href="../index.html#projects" class="is-active" aria-current="page">Projets</a></li>
-        <li><a href="../index.html#skills">Compétences</a></li>
-        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-right">
+      <nav data-aria-fr="Navigation principale" data-aria-en="Main navigation" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a></li>
+          <li><a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a></li>
+          <li><a href="../index.html#projects" class="is-active" aria-current="page"><span lang="fr">Projets</span><span lang="en">Projects</span></a></li>
+          <li><a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a></li>
+          <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
 
-    <button class="nav-toggle" type="button" data-nav-toggle
-            aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
+      <div class="lang-switch" role="group" data-aria-fr="Langue" data-aria-en="Language" aria-label="Langue">
+        <button type="button" data-set-lang="fr" aria-pressed="true" title="Français">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden aria-label="Navigation mobile">
-  <a href="../index.html#experience">Expérience</a>
-  <a href="../index.html#education">Éducation</a>
-  <a href="../index.html#projects">Projets</a>
-  <a href="../index.html#skills">Compétences</a>
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden data-aria-fr="Navigation mobile" data-aria-en="Mobile navigation" aria-label="Navigation mobile">
+  <a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a>
+  <a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a>
+  <a href="../index.html#projects"><span lang="fr">Projets</span><span lang="en">Projects</span></a>
+  <a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a>
   <a href="../index.html#contact" class="cta">Contact</a>
 </nav>
 
@@ -84,12 +111,12 @@
   <!-- ════════ EN-TÊTE DU PROJET ════════ -->
   <section class="section--dark section--grid proj-hero" aria-labelledby="titre-projet">
     <div class="section-wrap">
-      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
+      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> <span lang="fr">Tous les projets</span><span lang="en">All projects</span></a>
       <span class="section-label">ELE8202 · Polytechnique Montréal</span>
-      <h1 id="titre-projet">Automatisation d’un <em>palan industriel</em></h1>
-      <ul class="proj-meta"><li>2026</li><li>ELE8202 · Polytechnique Montréal</li><li>Équipe de 2</li></ul>
-      <p class="proj-lede">Automatisation complète d’un palan à deux axes qui transporte des pièces entre des cuves de traitement, sur un automate Schneider Modicon M340, à partir d’un cahier des charges industriel.</p>
-      <ul class="proj-tags"><li>Modicon M340</li><li>Grafcet</li><li>Ladder</li><li>IHM Magelis</li><li>Encodeurs</li></ul>
+      <h1 id="titre-projet"><span lang="fr">Automatisation d’un <em>palan industriel</em></span><span lang="en"><em>Industrial hoist</em> automation</span></h1>
+      <ul class="proj-meta"><li>2026</li><li>ELE8202 · Polytechnique Montréal</li><li><span lang="fr">Équipe de 2</span><span lang="en">Team of 2</span></li></ul>
+      <p class="proj-lede"><span lang="fr">Automatisation complète d’un palan à deux axes qui transporte des pièces entre des cuves de traitement, sur un automate Schneider Modicon M340, à partir d’un cahier des charges industriel.</span><span lang="en">Full automation of a two-axis hoist that carries parts between treatment tanks, on a Schneider Modicon M340 PLC, from an industrial specification.</span></p>
+      <ul class="proj-tags"><li>Modicon M340</li><li>Grafcet</li><li>Ladder</li><li><span lang="fr">IHM Magelis</span><span lang="en">Magelis HMI</span></li><li><span lang="fr">Encodeurs</span><span lang="en">Encoders</span></li></ul>
     </div>
   </section>
 
@@ -98,18 +125,18 @@
     <div class="section-wrap proj-body">
       <div>
         <section class="proj-section" aria-labelledby="titre-apercu">
-          <h2 class="proj-h2" id="titre-apercu">Aperçu</h2>
-          <p>Le système est un montage de palan industriel : deux moteurs indépendants déplacent la charge à l’horizontale et à la verticale, et la pièce doit passer par différentes cuves de trempage selon une séquence choisie par l’opérateur.</p>
-          <p>Le cahier des charges, volontairement désordonné comme en industrie, impose quatre modes de fonctionnement, un positionnement précis en boucle fermée et des sécurités qui s’appliquent en tout temps. La conception s’est faite d’abord sur papier en Grafcet, puis en programmation et mise au point sur l’automate.</p>
+          <h2 class="proj-h2" id="titre-apercu"><span lang="fr">Aperçu</span><span lang="en">Overview</span></h2>
+          <p><span lang="fr">Le système est un montage de palan industriel : deux moteurs indépendants déplacent la charge à l’horizontale et à la verticale, et la pièce doit passer par différentes cuves de trempage selon une séquence choisie par l’opérateur.</span><span lang="en">The system is an industrial hoist rig: two independent motors move the load horizontally and vertically, and each part has to go through different dipping tanks in a sequence chosen by the operator.</span></p>
+          <p><span lang="fr">Le cahier des charges, volontairement désordonné comme en industrie, impose quatre modes de fonctionnement, un positionnement précis en boucle fermée et des sécurités qui s’appliquent en tout temps. La conception s’est faite d’abord sur papier en Grafcet, puis en programmation et mise au point sur l’automate.</span><span lang="en">The specification, deliberately messy as it would be in industry, calls for four operating modes, precise closed-loop positioning and safety features that apply at all times. The design was done on paper in Grafcet first, then programmed and debugged on the PLC.</span></p>
         </section>
 
         <section class="proj-section" aria-labelledby="titre-realisations">
-          <h2 class="proj-h2" id="titre-realisations">Ce que j’ai réalisé</h2>
+          <h2 class="proj-h2" id="titre-realisations"><span lang="fr">Ce que j’ai réalisé</span><span lang="en">What I did</span></h2>
           <ul class="exp-list">
-            <li>Conçu et programmé l’automatisme séquentiel sur automate Modicon M340 en Grafcet et Ladder à partir d’un cahier des charges : modes initialisation, manuel, manuel assisté et automatique.</li>
-            <li>Implanté le positionnement en boucle fermée à deux vitesses à partir des encodeurs optiques lus par un module de comptage rapide.</li>
-            <li>Intégré les sécurités : arrêt d’urgence, maintien du palan dans son plan de travail, verrouillage logiciel des commandes contradictoires des moteurs.</li>
-            <li>Développé l’interface homme-machine sur écran tactile Magelis : position X-Y, état du système, messages et consignes.</li>
+            <li><span lang="fr">Conçu et programmé l’automatisme séquentiel sur automate Modicon M340 en Grafcet et Ladder à partir d’un cahier des charges : modes initialisation, manuel, manuel assisté et automatique.</span><span lang="en">Designed and programmed the sequential control on a Modicon M340 PLC in Grafcet and Ladder from a specification: initialization, manual, assisted manual and automatic modes.</span></li>
+            <li><span lang="fr">Implanté le positionnement en boucle fermée à deux vitesses à partir des encodeurs optiques lus par un module de comptage rapide.</span><span lang="en">Implemented two-speed closed-loop positioning from optical encoders read by a high-speed counter module.</span></li>
+            <li><span lang="fr">Intégré les sécurités : arrêt d’urgence, maintien du palan dans son plan de travail, verrouillage logiciel des commandes contradictoires des moteurs.</span><span lang="en">Built in the safety features: emergency stop, keeping the hoist within its workspace, and a software interlock against conflicting motor commands.</span></li>
+            <li><span lang="fr">Développé l’interface homme-machine sur écran tactile Magelis : position X-Y, état du système, messages et consignes.</span><span lang="en">Developed the HMI on a Magelis touchscreen: X-Y position, system status, messages and setpoints.</span></li>
           </ul>
         </section>
 
@@ -118,36 +145,36 @@
              alt="…" loading="lazy"> et une <figcaption>. -->
       </div>
 
-      <aside class="proj-aside" aria-label="Fiche technique">
+      <aside class="proj-aside" data-aria-fr="Fiche technique" data-aria-en="Technical summary" aria-label="Fiche technique">
         <div class="proj-panel">
-          <h2 class="proj-panel-title">Chiffres clés</h2>
+          <h2 class="proj-panel-title"><span lang="fr">Chiffres clés</span><span lang="en">Key figures</span></h2>
           <ul class="proj-stats">
-            <li><span class="proj-stat-num">2</span><span class="proj-stat-label">Axes motorisés</span></li>
-            <li><span class="proj-stat-num">4</span><span class="proj-stat-label">Modes de fonctionnement</span></li>
-            <li><span class="proj-stat-num">4</span><span class="proj-stat-label">Cuves de traitement</span></li>
-            <li><span class="proj-stat-num">2</span><span class="proj-stat-label">Vitesses en boucle fermée</span></li>
+            <li><span class="proj-stat-num">2</span><span class="proj-stat-label"><span lang="fr">Axes motorisés</span><span lang="en">Motorized axes</span></span></li>
+            <li><span class="proj-stat-num">4</span><span class="proj-stat-label"><span lang="fr">Modes de fonctionnement</span><span lang="en">Operating modes</span></span></li>
+            <li><span class="proj-stat-num">4</span><span class="proj-stat-label"><span lang="fr">Cuves de traitement</span><span lang="en">Treatment tanks</span></span></li>
+            <li><span class="proj-stat-num">2</span><span class="proj-stat-label"><span lang="fr">Vitesses en boucle fermée</span><span lang="en">Closed-loop speeds</span></span></li>
           </ul>
         </div>
 
         <div class="proj-panel">
           <h2 class="proj-panel-title">Technologies</h2>
-          <ul class="skill-pills"><li>Schneider Modicon M340</li><li>Control Expert</li><li>Grafcet (SFC)</li><li>Ladder (LD)</li><li>Comptage rapide</li><li>IHM Magelis</li></ul>
+          <ul class="skill-pills"><li>Schneider Modicon M340</li><li>Control Expert</li><li>Grafcet (SFC)</li><li>Ladder (LD)</li><li><span lang="fr">Comptage rapide</span><span lang="en">High-speed counting</span></li><li><span lang="fr">IHM Magelis</span><span lang="en">Magelis HMI</span></li></ul>
         </div>
       </aside>
     </div>
   </section>
 
   <!-- ════════ AUTRES PROJETS ════════ -->
-  <section class="section section--muted section--pager" aria-label="Autres projets">
+  <section class="section section--muted section--pager" data-aria-fr="Autres projets" data-aria-en="Other projects" aria-label="Autres projets">
     <div class="section-wrap">
-      <nav class="proj-pager" aria-label="Projet précédent et suivant">
+      <nav class="proj-pager" data-aria-fr="Projet précédent et suivant" data-aria-en="Previous and next project" aria-label="Projet précédent et suivant">
         <a href="aerotrail.html" rel="prev">
-          <span class="proj-pager-dir">← Projet précédent</span>
-          <span class="proj-pager-name">Ordinateur de vélo AeroTrail</span>
+          <span class="proj-pager-dir"><span lang="fr">← Projet précédent</span><span lang="en">← Previous project</span></span>
+          <span class="proj-pager-name"><span lang="fr">Ordinateur de vélo AeroTrail</span><span lang="en">AeroTrail bike computer</span></span>
         </a>
         <a class="proj-pager-next" href="telemetrie-course.html" rel="next">
-          <span class="proj-pager-dir">Projet suivant →</span>
-          <span class="proj-pager-name">Dispositif de télémétrie de course</span>
+          <span class="proj-pager-dir"><span lang="fr">Projet suivant →</span><span lang="en">Next project →</span></span>
+          <span class="proj-pager-name"><span lang="fr">Dispositif de télémétrie de course</span><span lang="en">Race telemetry device</span></span>
         </a>
       </nav>
     </div>
@@ -162,7 +189,7 @@
       <span class="footer-logo-mark" aria-hidden="true">PM</span>
       <span class="footer-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
-    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · Tous droits réservés</p>
+    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></p>
   </div>
 </footer>
 

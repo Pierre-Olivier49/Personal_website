@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"
+      data-title-fr="Dispositif de télémétrie de course | Pierre-Olivier Marquis"
+      data-title-en="Race telemetry device | Pierre-Olivier Marquis">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +12,13 @@
   <meta name="theme-color" content="#0d1f3c">
 
   <link rel="canonical" href="https://pierreoliviermarquis.com/projets/telemetrie-course.html">
+  <link rel="alternate" hreflang="fr" href="https://pierreoliviermarquis.com/projets/telemetrie-course.html?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://pierreoliviermarquis.com/projets/telemetrie-course.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://pierreoliviermarquis.com/projets/telemetrie-course.html">
 
   <meta property="og:type" content="article">
   <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
   <meta property="og:site_name" content="Pierre-Olivier Marquis">
   <meta property="og:url" content="https://pierreoliviermarquis.com/projets/telemetrie-course.html">
   <meta property="og:title" content="Dispositif de télémétrie de course | Pierre-Olivier Marquis">
@@ -28,6 +34,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Langue et « JS actif » avant le premier rendu (voir index.html). -->
+  <script>
+    (function (r) {
+      var l = null;
+      try { l = localStorage.getItem("lang"); } catch (e) {}
+      var q = /[?&]lang=(fr|en)\b/.exec(location.search);
+      if (q) l = q[1];
+      if (l !== "fr" && l !== "en") l = /^fr\b/i.test(navigator.language || "") ? "fr" : "en";
+      r.lang = l;
+      r.setAttribute("data-lang", l);
+      r.classList.add("js");
+    })(document.documentElement);
+  </script>
+
   <!-- Même ordre que l'accueil, plus la feuille propre aux pages de projet. -->
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
@@ -37,12 +57,12 @@
 
   <script src="../js/navigation.js" defer></script>
   <script src="../js/main.js" defer></script>
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="../js/i18n.js" defer></script>
 </head>
 
 <body>
 
-<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+<a class="skip-link" href="#contenu"><span lang="fr">Aller au contenu principal</span><span lang="en">Skip to main content</span></a>
 
 <!-- ════════ EN-TÊTE ════════ -->
 <header class="site-header" data-header>
@@ -52,30 +72,37 @@
       <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
 
-    <nav aria-label="Navigation principale">
-      <ul class="nav-links">
-        <li><a href="../index.html#experience">Expérience</a></li>
-        <li><a href="../index.html#education">Éducation</a></li>
-        <li><a href="../index.html#projects" class="is-active" aria-current="page">Projets</a></li>
-        <li><a href="../index.html#skills">Compétences</a></li>
-        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-right">
+      <nav data-aria-fr="Navigation principale" data-aria-en="Main navigation" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a></li>
+          <li><a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a></li>
+          <li><a href="../index.html#projects" class="is-active" aria-current="page"><span lang="fr">Projets</span><span lang="en">Projects</span></a></li>
+          <li><a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a></li>
+          <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
 
-    <button class="nav-toggle" type="button" data-nav-toggle
-            aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
+      <div class="lang-switch" role="group" data-aria-fr="Langue" data-aria-en="Language" aria-label="Langue">
+        <button type="button" data-set-lang="fr" aria-pressed="true" title="Français">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden aria-label="Navigation mobile">
-  <a href="../index.html#experience">Expérience</a>
-  <a href="../index.html#education">Éducation</a>
-  <a href="../index.html#projects">Projets</a>
-  <a href="../index.html#skills">Compétences</a>
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden data-aria-fr="Navigation mobile" data-aria-en="Mobile navigation" aria-label="Navigation mobile">
+  <a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a>
+  <a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a>
+  <a href="../index.html#projects"><span lang="fr">Projets</span><span lang="en">Projects</span></a>
+  <a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a>
   <a href="../index.html#contact" class="cta">Contact</a>
 </nav>
 
@@ -84,12 +111,12 @@
   <!-- ════════ EN-TÊTE DU PROJET ════════ -->
   <section class="section--dark section--grid proj-hero" aria-labelledby="titre-projet">
     <div class="section-wrap">
-      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
-      <span class="section-label">Système embarqué</span>
-      <h1 id="titre-projet">Dispositif de <em>télémétrie de course</em></h1>
-      <ul class="proj-meta"><li>2026</li><li>Système embarqué</li></ul>
-      <p class="proj-lede">Appareil de télémétrie véhiculaire en temps réel : vitesse, forces G, 0-100 km/h et quart de mille, affichés à l’écran et enregistrés sur carte microSD.</p>
-      <ul class="proj-tags"><li>ESP32</li><li>C++</li><li>GPS</li><li>IMU</li><li>Embarqué</li></ul>
+      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> <span lang="fr">Tous les projets</span><span lang="en">All projects</span></a>
+      <span class="section-label"><span lang="fr">Système embarqué</span><span lang="en">Embedded system</span></span>
+      <h1 id="titre-projet"><span lang="fr">Dispositif de <em>télémétrie de course</em></span><span lang="en"><em>Race telemetry</em> device</span></h1>
+      <ul class="proj-meta"><li>2026</li><li><span lang="fr">Système embarqué</span><span lang="en">Embedded system</span></li></ul>
+      <p class="proj-lede"><span lang="fr">Appareil de télémétrie véhiculaire en temps réel : vitesse, forces G, 0-100 km/h et quart de mille, affichés à l’écran et enregistrés sur carte microSD.</span><span lang="en">A real-time vehicle telemetry device: speed, G-forces, 0-100 km/h and quarter-mile times, shown on screen and logged to a microSD card.</span></p>
+      <ul class="proj-tags"><li>ESP32</li><li>C++</li><li>GPS</li><li>IMU</li><li><span lang="fr">Embarqué</span><span lang="en">Embedded</span></li></ul>
     </div>
   </section>
 
@@ -98,15 +125,15 @@
     <div class="section-wrap proj-body">
       <div>
         <section class="proj-section" aria-labelledby="titre-apercu">
-          <h2 class="proj-h2" id="titre-apercu">Aperçu</h2>
-          <p>Un appareil autonome qui se fixe dans une voiture et mesure ses performances en temps réel. Il combine un GPS et une centrale inertielle (IMU) autour d’un microcontrôleur ESP32, avec un écran OLED pour l’affichage et une carte microSD pour l’enregistrement des sessions.</p>
+          <h2 class="proj-h2" id="titre-apercu"><span lang="fr">Aperçu</span><span lang="en">Overview</span></h2>
+          <p><span lang="fr">Un appareil autonome qui se fixe dans une voiture et mesure ses performances en temps réel. Il combine un GPS et une centrale inertielle (IMU) autour d’un microcontrôleur ESP32, avec un écran OLED pour l’affichage et une carte microSD pour l’enregistrement des sessions.</span><span lang="en">A standalone device that mounts in a car and measures its performance in real time. It combines a GPS and an inertial measurement unit (IMU) around an ESP32 microcontroller, with an OLED screen for display and a microSD card to log sessions.</span></p>
         </section>
 
         <section class="proj-section" aria-labelledby="titre-realisations">
-          <h2 class="proj-h2" id="titre-realisations">Ce que j’ai réalisé</h2>
+          <h2 class="proj-h2" id="titre-realisations"><span lang="fr">Ce que j’ai réalisé</span><span lang="en">What I did</span></h2>
           <ul class="exp-list">
-            <li>Intégré un ESP32 avec un GPS, une centrale inertielle (IMU), un écran OLED et l’enregistrement sur microSD.</li>
-            <li>Programmé les algorithmes de filtrage pour la vitesse, les forces G, le 0-100 et le quart de mille.</li>
+            <li><span lang="fr">Intégré un ESP32 avec un GPS, une centrale inertielle (IMU), un écran OLED et l’enregistrement sur microSD.</span><span lang="en">Integrated an ESP32 with a GPS, an inertial measurement unit (IMU), an OLED display and microSD logging.</span></li>
+            <li><span lang="fr">Programmé les algorithmes de filtrage pour la vitesse, les forces G, le 0-100 et le quart de mille.</span><span lang="en">Programmed the filtering algorithms for speed, G-forces, 0-100 km/h and quarter-mile times.</span></li>
           </ul>
         </section>
 
@@ -115,7 +142,7 @@
              alt="…" loading="lazy"> et une <figcaption>. -->
       </div>
 
-      <aside class="proj-aside" aria-label="Fiche technique">
+      <aside class="proj-aside" data-aria-fr="Fiche technique" data-aria-en="Technical summary" aria-label="Fiche technique">
         <div class="proj-panel">
           <h2 class="proj-panel-title">Technologies</h2>
           <ul class="skill-pills"><li>ESP32</li><li>C++</li><li>GPS</li><li>IMU</li><li>OLED</li><li>microSD</li></ul>
@@ -125,16 +152,16 @@
   </section>
 
   <!-- ════════ AUTRES PROJETS ════════ -->
-  <section class="section section--muted section--pager" aria-label="Autres projets">
+  <section class="section section--muted section--pager" data-aria-fr="Autres projets" data-aria-en="Other projects" aria-label="Autres projets">
     <div class="section-wrap">
-      <nav class="proj-pager" aria-label="Projet précédent et suivant">
+      <nav class="proj-pager" data-aria-fr="Projet précédent et suivant" data-aria-en="Previous and next project" aria-label="Projet précédent et suivant">
         <a href="palan-industriel.html" rel="prev">
-          <span class="proj-pager-dir">← Projet précédent</span>
-          <span class="proj-pager-name">Automatisation d’un palan industriel</span>
+          <span class="proj-pager-dir"><span lang="fr">← Projet précédent</span><span lang="en">← Previous project</span></span>
+          <span class="proj-pager-name"><span lang="fr">Automatisation d’un palan industriel</span><span lang="en">Industrial hoist automation</span></span>
         </a>
         <a class="proj-pager-next" href="diagnostic-automobile.html" rel="next">
-          <span class="proj-pager-dir">Projet suivant →</span>
-          <span class="proj-pager-name">Diagnostic et réparation automobile</span>
+          <span class="proj-pager-dir"><span lang="fr">Projet suivant →</span><span lang="en">Next project →</span></span>
+          <span class="proj-pager-name"><span lang="fr">Diagnostic et réparation automobile</span><span lang="en">Automotive diagnostics and repair</span></span>
         </a>
       </nav>
     </div>
@@ -149,7 +176,7 @@
       <span class="footer-logo-mark" aria-hidden="true">PM</span>
       <span class="footer-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
-    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · Tous droits réservés</p>
+    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></p>
   </div>
 </footer>
 

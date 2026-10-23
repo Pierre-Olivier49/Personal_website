@@ -25,8 +25,14 @@ En ligne : [pierreoliviermarquis.com](https://pierreoliviermarquis.com)
 │   └── print.css         # Version imprimable
 └── js/
     ├── navigation.js     # Menu mobile, en-tête au défilement, lien actif
-    └── main.js           # Apparition au défilement, année du copyright
+    ├── main.js           # Apparition au défilement, année du copyright
+    └── i18n.js           # Bascule français / anglais
 ```
+
+Le site est bilingue : chaque texte est écrit deux fois, dans un
+`<span lang="fr">` et un `<span lang="en">`, et `base.css` masque la langue
+inactive. Le bouton FR | EN de l'en-tête change de langue et mémorise le choix ;
+sinon la langue du navigateur décide, et `?lang=en` force l'anglais dans un lien.
 
 Les trois feuilles CSS sont chargées dans l'ordre base → layout → components,
 parce que c'est l'ordre de la cascade. Les couleurs et les espacements sont des

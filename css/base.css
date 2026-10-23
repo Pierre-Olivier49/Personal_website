@@ -231,6 +231,15 @@ h1 .name-dash {
    4. UTILITAIRES
    ───────────────────────────────────────────────────────── */
 
+/* Bilinguisme : chaque texte existe en <span lang="fr"> et <span lang="en">,
+   et seule la langue active s'affiche (attribut data-lang posé sur <html>
+   par le script en tête de page). Sans JavaScript, le français reste
+   affiché. */
+html:not([data-lang="en"]) [lang="en"],
+html[data-lang="en"] [lang="fr"] {
+  display: none !important;
+}
+
 /* Visible uniquement par les lecteurs d'écran. */
 .visually-hidden {
   position: absolute;

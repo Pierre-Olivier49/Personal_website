@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"
+      data-title-fr="Robot autonome d’inspection de conduites | Pierre-Olivier Marquis"
+      data-title-en="Autonomous pipe inspection robot | Pierre-Olivier Marquis">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +12,13 @@
   <meta name="theme-color" content="#0d1f3c">
 
   <link rel="canonical" href="https://pierreoliviermarquis.com/projets/robot-inspection-conduites.html">
+  <link rel="alternate" hreflang="fr" href="https://pierreoliviermarquis.com/projets/robot-inspection-conduites.html?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://pierreoliviermarquis.com/projets/robot-inspection-conduites.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://pierreoliviermarquis.com/projets/robot-inspection-conduites.html">
 
   <meta property="og:type" content="article">
   <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
   <meta property="og:site_name" content="Pierre-Olivier Marquis">
   <meta property="og:url" content="https://pierreoliviermarquis.com/projets/robot-inspection-conduites.html">
   <meta property="og:title" content="Robot autonome d’inspection de conduites | Pierre-Olivier Marquis">
@@ -28,6 +34,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Langue et « JS actif » avant le premier rendu (voir index.html). -->
+  <script>
+    (function (r) {
+      var l = null;
+      try { l = localStorage.getItem("lang"); } catch (e) {}
+      var q = /[?&]lang=(fr|en)\b/.exec(location.search);
+      if (q) l = q[1];
+      if (l !== "fr" && l !== "en") l = /^fr\b/i.test(navigator.language || "") ? "fr" : "en";
+      r.lang = l;
+      r.setAttribute("data-lang", l);
+      r.classList.add("js");
+    })(document.documentElement);
+  </script>
+
   <!-- Même ordre que l'accueil, plus la feuille propre aux pages de projet. -->
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
@@ -37,12 +57,12 @@
 
   <script src="../js/navigation.js" defer></script>
   <script src="../js/main.js" defer></script>
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="../js/i18n.js" defer></script>
 </head>
 
 <body>
 
-<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+<a class="skip-link" href="#contenu"><span lang="fr">Aller au contenu principal</span><span lang="en">Skip to main content</span></a>
 
 <!-- ════════ EN-TÊTE ════════ -->
 <header class="site-header" data-header>
@@ -52,30 +72,37 @@
       <span class="nav-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
 
-    <nav aria-label="Navigation principale">
-      <ul class="nav-links">
-        <li><a href="../index.html#experience">Expérience</a></li>
-        <li><a href="../index.html#education">Éducation</a></li>
-        <li><a href="../index.html#projects" class="is-active" aria-current="page">Projets</a></li>
-        <li><a href="../index.html#skills">Compétences</a></li>
-        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-right">
+      <nav data-aria-fr="Navigation principale" data-aria-en="Main navigation" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a></li>
+          <li><a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a></li>
+          <li><a href="../index.html#projects" class="is-active" aria-current="page"><span lang="fr">Projets</span><span lang="en">Projects</span></a></li>
+          <li><a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a></li>
+          <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
 
-    <button class="nav-toggle" type="button" data-nav-toggle
-            aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
+      <div class="lang-switch" role="group" data-aria-fr="Langue" data-aria-en="Language" aria-label="Langue">
+        <button type="button" data-set-lang="fr" aria-pressed="true" title="Français">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden aria-label="Navigation mobile">
-  <a href="../index.html#experience">Expérience</a>
-  <a href="../index.html#education">Éducation</a>
-  <a href="../index.html#projects">Projets</a>
-  <a href="../index.html#skills">Compétences</a>
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden data-aria-fr="Navigation mobile" data-aria-en="Mobile navigation" aria-label="Navigation mobile">
+  <a href="../index.html#experience"><span lang="fr">Expérience</span><span lang="en">Experience</span></a>
+  <a href="../index.html#education"><span lang="fr">Éducation</span><span lang="en">Education</span></a>
+  <a href="../index.html#projects"><span lang="fr">Projets</span><span lang="en">Projects</span></a>
+  <a href="../index.html#skills"><span lang="fr">Compétences</span><span lang="en">Skills</span></a>
   <a href="../index.html#contact" class="cta">Contact</a>
 </nav>
 
@@ -84,12 +111,12 @@
   <!-- ════════ EN-TÊTE DU PROJET ════════ -->
   <section class="section--dark section--grid proj-hero" aria-labelledby="titre-projet">
     <div class="section-wrap">
-      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
-      <span class="section-label">Projet de fin d’études</span>
-      <h1 id="titre-projet">Robot autonome d’inspection de <em>conduites</em></h1>
-      <ul class="proj-meta"><li>2026 — 2027</li><li>Projet de fin d’études</li><li>Architecture de puissance</li></ul>
-      <p class="proj-lede">Robot autonome conçu pour inspecter l’intérieur de conduites. J’ai conçu l’architecture de puissance complète du robot, du choix des composants jusqu’au brochage du contrôleur, puis je l’ai construite et câblée.</p>
-      <ul class="proj-tags"><li>Li-ion 6S</li><li>BMS</li><li>SOC / SOH</li><li>Architecture de puissance</li><li>Câblage</li></ul>
+      <a class="proj-back" href="../index.html#projects"><span aria-hidden="true">←</span> <span lang="fr">Tous les projets</span><span lang="en">All projects</span></a>
+      <span class="section-label"><span lang="fr">Projet de fin d’études</span><span lang="en">Capstone project</span></span>
+      <h1 id="titre-projet"><span lang="fr">Robot autonome d’inspection de <em>conduites</em></span><span lang="en">Autonomous <em>pipe inspection</em> robot</span></h1>
+      <ul class="proj-meta"><li>2026 — 2027</li><li><span lang="fr">Projet de fin d’études</span><span lang="en">Capstone project</span></li><li><span lang="fr">Architecture de puissance</span><span lang="en">Power architecture</span></li></ul>
+      <p class="proj-lede"><span lang="fr">Robot autonome conçu pour inspecter l’intérieur de conduites. J’ai conçu l’architecture de puissance complète du robot, du choix des composants jusqu’au brochage du contrôleur, puis je l’ai construite et câblée.</span><span lang="en">An autonomous robot built to inspect the inside of pipes. I designed its complete power architecture, from component selection down to the controller pinout, then built and wired it.</span></p>
+      <ul class="proj-tags"><li><span lang="fr">Li-ion 6S</span><span lang="en">6S Li-ion</span></li><li>BMS</li><li>SOC / SOH</li><li><span lang="fr">Architecture de puissance</span><span lang="en">Power architecture</span></li><li><span lang="fr">Câblage</span><span lang="en">Wiring</span></li></ul>
     </div>
   </section>
 
@@ -98,19 +125,19 @@
     <div class="section-wrap proj-body">
       <div>
         <section class="proj-section" aria-labelledby="titre-apercu">
-          <h2 class="proj-h2" id="titre-apercu">Aperçu</h2>
-          <p>Un robot qui se déplace seul dans une conduite doit transporter toute son énergie avec lui : la batterie, sa protection et la distribution vers chaque sous-système déterminent combien de temps il peut travailler et à quel point il est sûr.</p>
-          <p>Mon rôle dans l’équipe était de concevoir ce système de puissance de bout en bout : un rail principal de 24 V alimenté par un bloc-batterie Li-ion 6S, deux convertisseurs 5 V pour l’électronique, et le raccordement de chaque composant jusqu’aux broches du contrôleur.</p>
+          <h2 class="proj-h2" id="titre-apercu"><span lang="fr">Aperçu</span><span lang="en">Overview</span></h2>
+          <p><span lang="fr">Un robot qui se déplace seul dans une conduite doit transporter toute son énergie avec lui : la batterie, sa protection et la distribution vers chaque sous-système déterminent combien de temps il peut travailler et à quel point il est sûr.</span><span lang="en">A robot that moves on its own inside a pipe has to carry all of its energy with it: the battery, its protection and the distribution to each subsystem decide how long it can work and how safe it is.</span></p>
+          <p><span lang="fr">Mon rôle dans l’équipe était de concevoir ce système de puissance de bout en bout : un rail principal de 24 V alimenté par un bloc-batterie Li-ion 6S, deux convertisseurs 5 V pour l’électronique, et le raccordement de chaque composant jusqu’aux broches du contrôleur.</span><span lang="en">My role on the team was to design that power system end to end: a 24 V main rail fed by a 6S Li-ion battery pack, two 5 V converters for the electronics, and the connection of every component down to the controller pins.</span></p>
         </section>
 
         <section class="proj-section" aria-labelledby="titre-realisations">
-          <h2 class="proj-h2" id="titre-realisations">Ce que j’ai réalisé</h2>
+          <h2 class="proj-h2" id="titre-realisations"><span lang="fr">Ce que j’ai réalisé</span><span lang="en">What I did</span></h2>
           <ul class="exp-list">
-            <li>Conçu l’architecture de puissance complète du robot, des composants jusqu’au brochage (pinout) du contrôleur : rail principal 24 V et deux convertisseurs 5 V.</li>
-            <li>Dimensionné le bloc-batterie Li-ion 6S (24 V, 91 Wh) avec système de gestion de batterie (BMS) pour une autonomie d’environ 1 h.</li>
-            <li>Protégé le circuit pour un courant de pointe de 8 A avec un fusible de 10 A.</li>
-            <li>Mis en place la surveillance de l’état de charge (SOC) et de l’état de santé (SOH) de la batterie pour suivre l’autonomie restante du robot.</li>
-            <li>Construit et câblé le système de puissance, de la batterie jusqu’aux sous-systèmes du robot.</li>
+            <li><span lang="fr">Conçu l’architecture de puissance complète du robot, des composants jusqu’au brochage (pinout) du contrôleur : rail principal 24 V et deux convertisseurs 5 V.</span><span lang="en">Designed the robot’s complete power architecture, from components down to the controller pinout: 24 V main rail and two 5 V converters.</span></li>
+            <li><span lang="fr">Dimensionné le bloc-batterie Li-ion 6S (24 V, 91 Wh) avec système de gestion de batterie (BMS) pour une autonomie d’environ 1 h.</span><span lang="en">Sized the 6S Li-ion battery pack (24 V, 91 Wh) with a battery management system (BMS) for about 1 h of runtime.</span></li>
+            <li><span lang="fr">Protégé le circuit pour un courant de pointe de 8 A avec un fusible de 10 A.</span><span lang="en">Protected the circuit for an 8 A peak current with a 10 A fuse.</span></li>
+            <li><span lang="fr">Mis en place la surveillance de l’état de charge (SOC) et de l’état de santé (SOH) de la batterie pour suivre l’autonomie restante du robot.</span><span lang="en">Implemented battery state-of-charge (SOC) and state-of-health (SOH) monitoring to track the robot’s remaining runtime.</span></li>
+            <li><span lang="fr">Construit et câblé le système de puissance, de la batterie jusqu’aux sous-systèmes du robot.</span><span lang="en">Built and wired the power system, from the battery to the robot’s subsystems.</span></li>
           </ul>
         </section>
 
@@ -119,38 +146,38 @@
              alt="…" loading="lazy"> et une <figcaption>. -->
       </div>
 
-      <aside class="proj-aside" aria-label="Fiche technique">
+      <aside class="proj-aside" data-aria-fr="Fiche technique" data-aria-en="Technical summary" aria-label="Fiche technique">
         <div class="proj-panel">
-          <h2 class="proj-panel-title">Chiffres clés</h2>
+          <h2 class="proj-panel-title"><span lang="fr">Chiffres clés</span><span lang="en">Key figures</span></h2>
           <ul class="proj-stats">
-            <li><span class="proj-stat-num">24 V</span><span class="proj-stat-label">Rail principal</span></li>
-            <li><span class="proj-stat-num">91 Wh</span><span class="proj-stat-label">Bloc Li-ion 6S</span></li>
-            <li><span class="proj-stat-num">8 A</span><span class="proj-stat-label">Courant de pointe</span></li>
-            <li><span class="proj-stat-num">10 A</span><span class="proj-stat-label">Fusible</span></li>
-            <li><span class="proj-stat-num">≈ 1 h</span><span class="proj-stat-label">Autonomie</span></li>
-            <li><span class="proj-stat-num">2 × 5 V</span><span class="proj-stat-label">Convertisseurs</span></li>
+            <li><span class="proj-stat-num">24 V</span><span class="proj-stat-label"><span lang="fr">Rail principal</span><span lang="en">Main rail</span></span></li>
+            <li><span class="proj-stat-num">91 Wh</span><span class="proj-stat-label"><span lang="fr">Bloc Li-ion 6S</span><span lang="en">6S Li-ion pack</span></span></li>
+            <li><span class="proj-stat-num">8 A</span><span class="proj-stat-label"><span lang="fr">Courant de pointe</span><span lang="en">Peak current</span></span></li>
+            <li><span class="proj-stat-num">10 A</span><span class="proj-stat-label"><span lang="fr">Fusible</span><span lang="en">Fuse</span></span></li>
+            <li><span class="proj-stat-num">≈ 1 h</span><span class="proj-stat-label"><span lang="fr">Autonomie</span><span lang="en">Runtime</span></span></li>
+            <li><span class="proj-stat-num">2 × 5 V</span><span class="proj-stat-label"><span lang="fr">Convertisseurs</span><span lang="en">Converters</span></span></li>
           </ul>
         </div>
 
         <div class="proj-panel">
           <h2 class="proj-panel-title">Technologies</h2>
-          <ul class="skill-pills"><li>Batteries Li-ion</li><li>BMS</li><li>Conversion CC-CC</li><li>Distribution de puissance</li><li>Protection par fusible</li></ul>
+          <ul class="skill-pills"><li><span lang="fr">Batteries Li-ion</span><span lang="en">Li-ion batteries</span></li><li>BMS</li><li><span lang="fr">Conversion CC-CC</span><span lang="en">DC-DC conversion</span></li><li><span lang="fr">Distribution de puissance</span><span lang="en">Power distribution</span></li><li><span lang="fr">Protection par fusible</span><span lang="en">Fuse protection</span></li></ul>
         </div>
       </aside>
     </div>
   </section>
 
   <!-- ════════ AUTRES PROJETS ════════ -->
-  <section class="section section--muted section--pager" aria-label="Autres projets">
+  <section class="section section--muted section--pager" data-aria-fr="Autres projets" data-aria-en="Other projects" aria-label="Autres projets">
     <div class="section-wrap">
-      <nav class="proj-pager" aria-label="Projet précédent et suivant">
+      <nav class="proj-pager" data-aria-fr="Projet précédent et suivant" data-aria-en="Previous and next project" aria-label="Projet précédent et suivant">
         <a href="cristal-silicium.html" rel="prev">
-          <span class="proj-pager-dir">← Projet précédent</span>
-          <span class="proj-pager-name">Croissance d’un cristal de silicium</span>
+          <span class="proj-pager-dir"><span lang="fr">← Projet précédent</span><span lang="en">← Previous project</span></span>
+          <span class="proj-pager-name"><span lang="fr">Croissance d’un cristal de silicium</span><span lang="en">Silicon crystal growth</span></span>
         </a>
         <a class="proj-pager-next" href="aerotrail.html" rel="next">
-          <span class="proj-pager-dir">Projet suivant →</span>
-          <span class="proj-pager-name">Ordinateur de vélo AeroTrail</span>
+          <span class="proj-pager-dir"><span lang="fr">Projet suivant →</span><span lang="en">Next project →</span></span>
+          <span class="proj-pager-name"><span lang="fr">Ordinateur de vélo AeroTrail</span><span lang="en">AeroTrail bike computer</span></span>
         </a>
       </nav>
     </div>
@@ -165,7 +192,7 @@
       <span class="footer-logo-mark" aria-hidden="true">PM</span>
       <span class="footer-logo-text">Pierre<span class="name-dash">-</span>Olivier Marquis</span>
     </a>
-    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · Tous droits réservés</p>
+    <p>© <span data-current-year>2026</span> Pierre-Olivier Marquis · <span lang="fr">Tous droits réservés</span><span lang="en">All rights reserved</span></p>
   </div>
 </footer>
 
